@@ -3,6 +3,8 @@ import FormInputField from './components/form-input-field.jsx';
 import FormDateField from './components/form-date-field.jsx';
 import FormTextAreaField from './components/form-text-area-field.jsx';
 import NewRequirementsFormResponseBlockList from './components/new-requirements-form-response-block-list.component';
+import SubmitButton from '../../../components/submit-button.component.jsx'
+import CustomModalStyleButton from '../../../components/custom-modal-components/custom-modal-style-buttoncomponent..jsx';
 
 function NewRequirementsForm() {
   const [bloquesRespuestas, setBloquesRespuestas] = useState([]);
@@ -17,7 +19,7 @@ function NewRequirementsForm() {
       { id: Date.now() + 1 },
       { id: Date.now() + 2 },
     ]);
-  }, []); 
+  }, []);
 
   const agregarBloque = () => {
     setBloquesRespuestas([...bloquesRespuestas, { id: Date.now() }]);
@@ -32,15 +34,16 @@ function NewRequirementsForm() {
   };
 
   return (
-    <div style={{ padding: '20px' }}> {/* Agrega padding al formulario */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px' }}>
+    <div style={{ padding: '20px' }}> 
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px',  flexDirection: 'column', boxSizing: 'border-box'}}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.8fr 1fr', gap: '10px' }}> {/* Ajuste fino aquí */}
           <FormInputField
             label="N° de requerimiento"
             id="numeroRequerimiento"
             placeholder="000000"
             value={numeroRequerimiento}
             onChange={(e) => setNumeroRequerimiento(e.target.value)}
+            inputWidth="100%"
           />
           <FormInputField
             label="Solicitante"
@@ -48,6 +51,7 @@ function NewRequirementsForm() {
             placeholder="Escribir nombre"
             value={solicitante}
             onChange={(e) => setSolicitante(e.target.value)}
+            inputWidth="100%"
           />
           <FormDateField
             label="Fecha"
@@ -55,6 +59,7 @@ function NewRequirementsForm() {
             placeholder="DD/MM/AA"
             value={fecha}
             onChange={(e) => setFecha(e.target.value)}
+            inputWidth="100%"
           />
         </div>
       </div>
@@ -64,14 +69,21 @@ function NewRequirementsForm() {
         value={motivo}
         placeholder="Motivo del requerimiento"
         onChange={(e) => setMotivo(e.target.value)}
+        inputWidth="100%"
       />
       <NewRequirementsFormResponseBlockList
         bloques={bloquesRespuestas}
         onAgregar={agregarBloque}
         onEliminar={eliminarBloque}
       />
-      <button className="primary" style={{ marginRight: '10px' }}>Crear</button> {/* Botón azul */}
-      <button className="secondary">Cancelar</button> {/* Botón gris */}
+      <div style={{ position: 'fixed', bottom: '20px', right: '20px', display: 'flex' }}>
+        <CustomModalStyleButton primary={false} style={{ marginRight: '10px' }}>
+          Cancelar
+        </CustomModalStyleButton>
+        <CustomModalStyleButton primary={true} style={{ marginRight: '10px' }}>
+          Aceptar
+        </CustomModalStyleButton>
+      </div>
     </div>
   );
 }

@@ -7,7 +7,7 @@ function SubmitButton({ children, onClick, marginLeft, marginRight, marginTop, m
         color: 'white', 
         fontSize: '18px', 
         padding: '0.5rem 4rem', 
-        width: '250px',
+        width: '240px',
         marginLeft: marginLeft || '0px',
         marginRight: marginRight || '0px',
         marginTop: marginTop || '0px',
