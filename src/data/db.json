@@ -2,5 +2,88 @@
   "users": [
     { "id": 1, "username": "admin", "password": "123456" },
     { "id": 2, "username": "user1", "password": "password" }
+  ],
+   "pending-requirements": [
+    {
+      "id": "REQ-001",
+      "name": "Juan Pérez",
+      "status": "Pendiente",
+      "creationDate": "2023-10-26T10:00:00Z",
+      "vb1": "Pendiente",
+      "vb2": "Pendiente",
+      "vb3": "Pendiente"
+    },
+    {
+      "id": "REQ-002",
+      "name": "María García",
+      "status": "En Proceso",
+      "creationDate": "2023-10-25T14:30:00Z",
+      "vb1": "Aprobado",
+      "vb2": "Pendiente",
+      "vb3": "Pendiente"
+    },
+    {
+      "id": "REQ-003",
+      "name": "Carlos López",
+      "status": "Pendiente",
+      "creationDate": "2023-10-24T09:15:00Z",
+      "vb1": "Pendiente",
+      "vb2": "Pendiente",
+      "vb3": "Pendiente"
+    },
+    {
+      "id": "REQ-004",
+      "name": "Ana Martínez",
+      "status": "En Proceso",
+      "creationDate": "2023-10-23T16:45:00Z",
+      "vb1": "Aprobado",
+      "vb2": "Aprobado",
+      "vb3": "Pendiente"
+    },
+    {
+      "id": "REQ-005",
+      "name": "Pedro Rodríguez",
+      "status": "Pendiente",
+      "creationDate": "2023-10-22T11:20:00Z",
+      "vb1": "Pendiente",
+      "vb2": "Pendiente",
+      "vb3": "Pendiente"
+    },
+    {
+      "id": "REQ-006",
+      "name": "Laura Sánchez",
+      "status": "En Proceso",
+      "creationDate": "2023-10-21T13:00:00Z",
+      "vb1": "Aprobado",
+      "vb2": "Pendiente",
+      "vb3": "Pendiente"
+    },
+    {
+      "id": "REQ-007",
+      "name": "Diego González",
+      "status": "Pendiente",
+      "creationDate": "2023-10-20T17:30:00Z",
+      "vb1": "Pendiente",
+      "vb2": "Pendiente",
+      "vb3": "Pendiente"
+    },
+    {
+      "id": "REQ-008",
+      "name": "Sofía Torres",
+      "status": "En Proceso",
+      "creationDate": "2023-10-19T10:45:00Z",
+      "vb1": "Aprobado",
+      "vb2": "Aprobado",
+      "vb3": "Pendiente"
+    },
+    {
+      "id": "REQ-009",
+      "name": "Miguel Ramírez",
+      "status": "Pendiente",
+      "creationDate": "2023-10-18T15:10:00Z",
+      "vb1": "Pendiente",
+      "vb2": "Pendiente",
+      "vb3": "Pendiente"
+    }
   ]
 }

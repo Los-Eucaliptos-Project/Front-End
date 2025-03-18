@@ -1,7 +1,5 @@
 import React from 'react';
-import CustomModalStyleOverlay from './custom-modal-style-over-lay.component';
-import CustomModalStyleContent from './custom-modal-style-content.component';
-import CustomModalStyleButton from './custom-modal-style-buttoncomponent.';
+import styles from '../../modules/custom-modal.module.css';
 
 function CustomModal({
   isOpen,
@@ -16,24 +14,24 @@ function CustomModal({
   if (!isOpen) return null;
 
   return (
-    <CustomModalStyleOverlay onClick={onClose}>
-      <CustomModalStyleContent onClick={(e) => e.stopPropagation()}>
+    <div className={styles.overlay} onClick={onClose}>
+      <div className={styles.content} onClick={(e) => e.stopPropagation()}>
         <h2>{title}</h2>
         {children}
         <div>
           {secondaryButtonText && (
-            <CustomModalStyleButton onClick={onSecondaryButtonClick}>
+            <button className={`${styles.button} ${styles.secondary}`} onClick={onSecondaryButtonClick}>
               {secondaryButtonText}
-            </CustomModalStyleButton>
+            </button>
           )}
           {primaryButtonText && (
-            <CustomModalStyleButton primary onClick={onPrimaryButtonClick}>
+            <button className={`${styles.button} ${styles.primary}`} onClick={onPrimaryButtonClick}>
               {primaryButtonText}
-            </CustomModalStyleButton>
+            </button>
           )}
         </div>
-      </CustomModalStyleContent>
-    </CustomModalStyleOverlay>
+      </div>
+    </div>
   );
 }
 

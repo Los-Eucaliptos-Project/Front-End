@@ -5,8 +5,8 @@ import styles from '../../../../modules/form-input-field.module.css';
 
 function NewRequirementsFormResponseBlock({ id, onEliminar }) {
   return (
-    <div className={styles.container} style={{ borderBottom: '1px solid #ccc', marginBottom: '10px' }}> {/* Línea y margen agregados */}
-      <div style={{ padding: '10px', margin: '10px 0', display: 'grid', gridTemplateColumns: '1fr 1fr 2fr 1fr', gap: '10px' }}> {/* Borde eliminado */}
+    <div className={styles.container} style={{ borderBottom: '1px solid #ccc', marginBottom: '10px' }}>
+      <div style={{ padding: '10px', margin: '10px 0', display: 'grid', gridTemplateColumns: '1fr 1fr 2fr 1fr', gap: '10px' }}>
         <input 
           type="text" 
           placeholder="Cantidad" 
