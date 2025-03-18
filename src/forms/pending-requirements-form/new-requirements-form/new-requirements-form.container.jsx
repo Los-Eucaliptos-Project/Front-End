@@ -3,7 +3,6 @@ import FormInputField from './components/form-input-field.jsx';
 import FormDateField from './components/form-date-field.jsx';
 import FormTextAreaField from './components/form-text-area-field.jsx';
 import NewRequirementsFormResponseBlockList from './components/new-requirements-form-response-block-list.component';
-import SubmitButton from '../../../components/submit-button.component.jsx'
 import CustomModalStyleButton from '../../../components/custom-modal-components/custom-modal-style-buttoncomponent..jsx';
 
 function NewRequirementsForm() {
@@ -36,7 +35,7 @@ function NewRequirementsForm() {
   return (
     <div style={{ padding: '20px' }}> 
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px',  flexDirection: 'column', boxSizing: 'border-box'}}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.8fr 1fr', gap: '10px' }}> {/* Ajuste fino aquí */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.8fr 1fr', gap: '10px' }}>
           <FormInputField
             label="N° de requerimiento"
             id="numeroRequerimiento"
@@ -72,6 +71,7 @@ function NewRequirementsForm() {
         inputWidth="100%"
       />
       <NewRequirementsFormResponseBlockList
+        label="Items"
         bloques={bloquesRespuestas}
         onAgregar={agregarBloque}
         onEliminar={eliminarBloque}

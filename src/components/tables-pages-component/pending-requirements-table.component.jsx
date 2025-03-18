@@ -25,6 +25,8 @@ import CustomModal from '../custom-modal-components/custom-modal.component';
 
 import { Link } from 'react-router-dom'
 
+import getRequirements from '../../services/pending-requeriments-service';
+
 function PendingRequirementsTableContainer() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedStatus, setSelectedStatus] = useState(null);

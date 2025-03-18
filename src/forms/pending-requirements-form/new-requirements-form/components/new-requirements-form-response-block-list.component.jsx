@@ -4,12 +4,10 @@ import styles from '../../../../modules/form-input-field.module.css'
 import CustomModalStyleButton from '../../../../components/custom-modal-components/custom-modal-style-buttoncomponent..jsx';
 
 
-function NewRequirementsFormResponseBlockList({ bloques, onAgregar, onEliminar }) {
+function NewRequirementsFormResponseBlockList({label, bloques, onAgregar, onEliminar }) {
   return (
-    <div>
-
-      <label className={styles.label}> Items</label>
-
+    <div style={{marginTop: '30px', textAlign: 'left'}}>
+      <label className={styles.label}> {label}</label>
       {bloques.map((bloque) => (
         <NewRequirementsFormResponseBlock key={bloque.id} id={bloque.id} onEliminar={onEliminar} />
       ))}
