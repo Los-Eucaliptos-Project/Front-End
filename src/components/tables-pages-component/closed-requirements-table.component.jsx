@@ -20,7 +20,7 @@ import ContainerStylePageHeader from '../main-container-components/container-sty
 
 import SampleDataPendingRequests from '../../data/SampleData';
 
-import CustomModal from '../custom-modal-components/custom-modal.component';
+import CustomModal from '../custom-modal-components/custom-modal-white-and-green.component';
 
 
 function ClosedRequirementsTableContainer() {

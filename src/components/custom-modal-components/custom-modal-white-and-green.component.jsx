@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../../modules/custom-modal.module.css';
 
-function CustomModal({
+function CustomModalWhiteAndGreen({
   isOpen,
   onClose,
   title,
@@ -35,4 +35,4 @@ function CustomModal({
   );
 }
 
-export default CustomModal;
+export default CustomModalWhiteAndGreen;

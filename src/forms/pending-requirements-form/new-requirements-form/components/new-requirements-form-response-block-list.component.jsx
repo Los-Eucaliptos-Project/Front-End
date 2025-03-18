@@ -1,7 +1,7 @@
 import React from 'react';
 import NewRequirementsFormResponseBlock from './new-requirements-form-response-block.component';
 import styles from '../../../../modules/form-input-field.module.css';
-import CustomModalStyleButton from '../../../../components/custom-modal-components/custom-modal-style-buttoncomponent..jsx';
+import stylesCustom from '../../../../modules/custom-modal.module.css';
 
 function NewRequirementsFormResponseBlockList({ label, bloques, onAgregar, onEliminar }) {
   return (
@@ -11,7 +11,7 @@ function NewRequirementsFormResponseBlockList({ label, bloques, onAgregar, onEli
         <NewRequirementsFormResponseBlock key={bloque.id} id={bloque.id} onEliminar={onEliminar} />
       ))}
       <div style={{alignSelf: 'flex-start', marginTop: '10px'}}>
-        <CustomModalStyleButton onClick={onAgregar} primary={true}>Agregar</CustomModalStyleButton>
+        <button  className={`${stylesCustom.button} ${stylesCustom.primary}`} onClick={onAgregar}>Agregar</button>
       </div>
     </div>
   );

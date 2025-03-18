@@ -3,7 +3,7 @@ import FormInputField from './components/form-input-field.jsx';
 import FormDateField from './components/form-date-field.jsx';
 import FormTextAreaField from './components/form-text-area-field.jsx';
 import NewRequirementsFormResponseBlockList from './components/new-requirements-form-response-block-list.component';
-import CustomModalStyleButton from '../../../components/custom-modal-components/custom-modal-style-buttoncomponent..jsx';
+import styles from '../../../modules/custom-modal.module.css';
 
 function NewRequirementsForm() {
   const [bloquesRespuestas, setBloquesRespuestas] = useState([]);
@@ -77,12 +77,12 @@ function NewRequirementsForm() {
         onEliminar={eliminarBloque}
       />
       <div style={{ position: 'fixed', bottom: '20px', right: '20px', display: 'flex' }}>
-        <CustomModalStyleButton primary={false} style={{ marginRight: '10px' }}>
+        <button className={`${styles.button} ${styles.secondary}`}  style={{ marginRight: '10px' }}>
           Cancelar
-        </CustomModalStyleButton>
-        <CustomModalStyleButton primary={true} style={{ marginRight: '10px' }}>
+        </button>
+        <button className={`${styles.button} ${styles.primary}`}  style={{ marginRight: '10px' }}>
           Aceptar
-        </CustomModalStyleButton>
+        </button>
       </div>
     </div>
   );
