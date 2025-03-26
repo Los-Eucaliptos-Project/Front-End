@@ -28,24 +28,13 @@ import {
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 
-function HeaderSlidePendingRequirements() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+import useHeaderSlide from '../../hooks/use-header-slide.hook';
+import usePageRefresh from '../../hooks/use-page-refresh.hook,jsx';
 
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+function SlidePendingRequirements() {
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleRefresh = (event) => {
-    event.preventDefault();
-    window.location.href = '/pending-requirements';
-  };
+    const { isMobile, isMenuOpen, toggleMenu } = useHeaderSlide();
+    const handleRefresh = usePageRefresh('/pending-requirements');
 
   return (
     <HeaderContainer isMobile={isMobile}>
@@ -138,4 +127,4 @@ function HeaderSlidePendingRequirements() {
   );
 }
 
-export default HeaderSlidePendingRequirements;
+export default SlidePendingRequirements;

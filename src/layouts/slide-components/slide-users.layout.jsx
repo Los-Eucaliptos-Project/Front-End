@@ -28,24 +28,13 @@ import {
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 
+import useHeaderSlide from '../../hooks/use-header-slide.hook';
+import usePageRefresh from '../../hooks/use-page-refresh.hook,jsx';
+
 function SlideUser() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleRefresh = (event) => {
-    event.preventDefault();
-    window.location.href = '/users';
-  };
+  
+  const { isMobile, isMenuOpen, toggleMenu } = useHeaderSlide();
+  const handleRefresh = usePageRefresh('/users');
 
   return (
     <HeaderContainer isMobile={isMobile}>

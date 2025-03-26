@@ -12,23 +12,30 @@ import HeaderLogoSection from '../../components/header-components/header-logo-se
 import HeaderFooterContainer from '../../components/header-components/header-footer-container.component';
 
 
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThLarge, faPowerOff, faUser, faBell, faCheck, faScrewdriverWrench, 
-    faBarsProgress, faTag, faTags, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import {
+  faThLarge,
+  faPowerOff,
+  faUser,
+  faBell,
+  faCheck,
+  faScrewdriverWrench,
+  faBarsProgress,
+  faTag,
+  faTags,
+  faBars,
+  faTimes,
+} from '@fortawesome/free-solid-svg-icons';
+
+import useHeaderSlide from '../../hooks/use-header-slide.hook';
+import usePageRefresh from '../../hooks/use-page-refresh.hook,jsx';
+
 
 function SlideLayout() {
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth <= 768);
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
+    
+    const { isMobile, isMenuOpen, toggleMenu } = useHeaderSlide();
+    const handleRefresh = usePageRefresh('/');
 
     return (
         <HeaderContainer isMobile={isMobile}>
