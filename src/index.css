@@ -34,6 +34,7 @@ body {
   display: flex;
   place-items: center;
   flex-direction: column;
+  background-color: white;
 }
 
 h1 {
