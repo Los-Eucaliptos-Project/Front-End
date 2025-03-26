@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import HeaderContainer from '../header-components/header-container.component';
-import FormLogo from '../form-logo.component';
-import HeaderMenuSection from '../header-components/header-menu-section.component';
-import HeaderHamburgerMenu from '../header-components/header-hamburger-menu.component';
-import HeaderItem from '../header-components/header-item.component';
-import HeaderLink from '../header-components/header-link.component';
-import HeaderCloseMenuIcon from '../header-components/header-close-menu-icon.components';
-import HeaderContent from '../header-components/header-content.component';
-import HeaderLogoSection from '../header-components/header-logo-section.component';
-import HeaderFooterContainer from '../header-components/header-footer-container.component';
-import HeaderSelectButton from '../header-components/header-select-button.components';
-import HeaderSlideBarGreen from '../header-components/header-sidebar-green.component';
+import HeaderContainer from '../../components/header-components/header-container.component';
+import FormLogo from '../../components/form-logo.component';
+import HeaderMenuSection from '../../components/header-components/header-menu-section.component';
+import HeaderHamburgerMenu from '../../components/header-components/header-hamburger-menu.component';
+import HeaderItem from '../../components/header-components/header-item.component';
+import HeaderLink from '../../components/header-components/header-link.component';
+import HeaderCloseMenuIcon from '../../components/header-components/header-close-menu-icon.components';
+import HeaderContent from '../../components/header-components/header-content.component';
+import HeaderLogoSection from '../../components/header-components/header-logo-section.component';
+import HeaderFooterContainer from '../../components/header-components/header-footer-container.component';
+import HeaderSelectButton from '../../components/header-components/header-select-button.components';
+import HeaderSlideBarGreen from '../../components/header-components/header-sidebar-green.component';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -28,7 +28,7 @@ import {
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 
-function HeaderSlideDashboard() {
+function SlideUser() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -44,7 +44,7 @@ function HeaderSlideDashboard() {
 
   const handleRefresh = (event) => {
     event.preventDefault();
-    window.location.href = '/dashboard';
+    window.location.href = '/users';
   };
 
   return (
@@ -68,11 +68,10 @@ function HeaderSlideDashboard() {
 
         <HeaderMenuSection isMobile={isMobile} isMenuOpen={isMenuOpen}>
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-            <HeaderSelectButton href="/dashboard" onClick={handleRefresh}>
+            <HeaderLink href="/dashboard">
               <FontAwesomeIcon icon={faThLarge} style={{ marginRight: '0.7rem' }} />
               Dashboard
-            </HeaderSelectButton>
-            <HeaderSlideBarGreen marginTop="180px" />
+            </HeaderLink>
           </HeaderItem>
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
             <HeaderLink href="/pending-requirements">
@@ -110,10 +109,11 @@ function HeaderSlideDashboard() {
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-            <HeaderLink href="/users">
+            <HeaderSelectButton href="/users" onClick={handleRefresh}>
               <FontAwesomeIcon icon={faUser} style={{ marginRight: '0.7rem' }} />
               Usuarios
-            </HeaderLink>
+            </HeaderSelectButton>
+            <HeaderSlideBarGreen marginTop="590px" />
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
@@ -137,4 +137,4 @@ function HeaderSlideDashboard() {
   );
 }
 
-export default HeaderSlideDashboard;
+export default SlideUser;

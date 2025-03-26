@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import HeaderContainer from '../header-components/header-container.component';
-import FormLogo from '../form-logo.component';
-import HeaderMenuSection from '../header-components/header-menu-section.component';
-import HeaderHamburgerMenu from '../header-components/header-hamburger-menu.component';
-import HeaderItem from '../header-components/header-item.component';
-import HeaderLink from '../header-components/header-link.component';
-import HeaderCloseMenuIcon from '../header-components/header-close-menu-icon.components';
-import HeaderContent from '../header-components/header-content.component';
-import HeaderLogoSection from '../header-components/header-logo-section.component';
-import HeaderFooterContainer from '../header-components/header-footer-container.component';
-import HeaderSelectButton from '../header-components/header-select-button.components';
-import HeaderSlideBarGreen from '../header-components/header-sidebar-green.component';
+import HeaderContainer from '../../components/header-components/header-container.component';
+import FormLogo from '../../components/form-logo.component';
+import HeaderMenuSection from '../../components/header-components/header-menu-section.component';
+import HeaderHamburgerMenu from '../../components/header-components/header-hamburger-menu.component';
+import HeaderItem from '../../components/header-components/header-item.component';
+import HeaderLink from '../../components/header-components/header-link.component';
+import HeaderCloseMenuIcon from '../../components/header-components/header-close-menu-icon.components';
+import HeaderContent from '../../components/header-components/header-content.component';
+import HeaderLogoSection from '../../components/header-components/header-logo-section.component';
+import HeaderFooterContainer from '../../components/header-components/header-footer-container.component';
+import HeaderSelectButton from '../../components/header-components/header-select-button.components';
+import HeaderSlideBarGreen from '../../components/header-components/header-sidebar-green.component';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -28,7 +28,7 @@ import {
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 
-function HeaderSlideCloseRequirements() {
+function HeaderSlidePendingRequirements() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -44,7 +44,7 @@ function HeaderSlideCloseRequirements() {
 
   const handleRefresh = (event) => {
     event.preventDefault();
-    window.location.href = '/closed-requests'; // Corrected URL
+    window.location.href = '/pending-requirements';
   };
 
   return (
@@ -73,11 +73,13 @@ function HeaderSlideCloseRequirements() {
               Dashboard
             </HeaderLink>
           </HeaderItem>
+
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-            <HeaderLink href="/pending-requirements">
+            <HeaderSelectButton href="/pending-requirements" onClick={handleRefresh}>
               <FontAwesomeIcon icon={faTag} style={{ marginRight: '0.7rem' }} />
               Req. Pendientes
-            </HeaderLink>
+            </HeaderSelectButton>
+            <HeaderSlideBarGreen marginTop="240px" />
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
@@ -85,7 +87,6 @@ function HeaderSlideCloseRequirements() {
               <FontAwesomeIcon icon={faTags} style={{ marginRight: '0.7rem' }} />
               Req. Cerrados
             </HeaderLink>
-            <HeaderSlideBarGreen marginTop="315px" />
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
@@ -96,10 +97,10 @@ function HeaderSlideCloseRequirements() {
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-            <HeaderSelectButton href="/closed-requests" onClick={handleRefresh}>
+            <HeaderLink href="/closed-requests">
               <FontAwesomeIcon icon={faCheck} style={{ marginRight: '0.7rem' }} />
               Sol. Cerrados
-            </HeaderSelectButton>
+            </HeaderLink>
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
@@ -137,4 +138,4 @@ function HeaderSlideCloseRequirements() {
   );
 }
 
-export default HeaderSlideCloseRequirements;
+export default HeaderSlidePendingRequirements;

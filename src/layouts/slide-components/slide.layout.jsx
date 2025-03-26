@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import HeaderContainer from '../header-components/header-container.component'
-import FormLogo from '../form-logo.component';
-import HeaderMenuSection from '../header-components/header-menu-section.component';
-import HeaderHamburgerMenu from '../header-components/header-hamburger-menu.component'
-import HeaderItem from '../header-components/header-item.component'
-import HeaderLink from '../header-components/header-link.component'
-import HeaderCloseMenuIcon from '../header-components/header-close-menu-icon.components'
-import HeaderContent from '../header-components/header-content.component';
-import HeaderLogoSection from '../header-components/header-logo-section.component'
-import HeaderFooterContainer from '../header-components/header-footer-container.component';
+import HeaderContainer from '../../components/header-components/header-container.component'
+import FormLogo from '../../components/form-logo.component';
+import HeaderMenuSection from '../../components/header-components/header-menu-section.component';
+import HeaderHamburgerMenu from '../../components/header-components/header-hamburger-menu.component'
+import HeaderItem from '../../components/header-components/header-item.component'
+import HeaderLink from '../../components/header-components/header-link.component'
+import HeaderCloseMenuIcon from '../../components/header-components/header-close-menu-icon.components'
+import HeaderContent from '../../components/header-components/header-content.component';
+import HeaderLogoSection from '../../components/header-components/header-logo-section.component'
+import HeaderFooterContainer from '../../components/header-components/header-footer-container.component';
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThLarge, faPowerOff, faUser, faBell, faCheck, faScrewdriverWrench, 
     faBarsProgress, faTag, faTags, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
-function HeaderSlide() {
+function SlideLayout() {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -118,4 +118,4 @@ function HeaderSlide() {
     );
 }
 
-export default HeaderSlide;
+export default SlideLayout;

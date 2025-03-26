@@ -12,20 +12,20 @@ import DetailsRequirements from './pages/details-requirements.page.jsx';
 import ClosedRequests from './pages/closed-requests.page.jsx';
 
 import PendingRequests from './pages/pending-requests.page.jsx';
-import HeaderSlideClosedRequests from './components/slide-components/header-slide-closed-requests.component.jsx';
 
 import Themes from './pages/themes.page.jsx'
 import Users from './pages/users-page.jsx'
 import Notifications from './pages/notifications.page.jsx';
 
-import HeaderSlide from './components/slide-components/header-slide.layout.jsx'
-import HeaderSlideDashboard from './components/slide-components/header-slide-dashboard.component.jsx';
-import HeaderSlidePendingRequirements from './components/slide-components/header-slide-pending-requirements.component.jsx';
-import HeaderSlideCloseRequirements from './components/slide-components/header-slide-closed-requirements.component.jsx';
-import HeaderSlidePendingRequests from './components/slide-components/header-slide-pending-requests.component.jsx';
-import HeaderSlideThemes from './components/slide-components/header-slide-themes.component.jsx';
-import HeaderSlideUser from './components/slide-components/header-slide-users.component.jsx';
-import HeaderSlideNotifications from './components/slide-components/header-slide-notifications.component.jsx';
+import SlideLayout from './layouts/slide-components/slide.layout.jsx';
+import SlideDashboard from './layouts/slide-components/slide-dashboard.layout.jsx';
+import SlidePendingRequirements from './layouts/slide-components/slide-pending-requirements.layout.jsx';
+import SlideCloseRequirements from './layouts/slide-components/slide-closed-requirements.layout.jsx';
+import SlidePendingRequests from './layouts/slide-components/slide-pending-requests.layout.jsx';
+import SlideCloseRequests from './layouts/slide-components/slide-closed-requests.layout.jsx';
+import SlideThemes from './layouts/slide-components/slide-themes.layout.jsx';
+import SlideUser from './layouts/slide-components/slide-users.layout.jsx';
+import SlideNotifications from './layouts/slide-components/slide-notifications.layout.jsx';
 
 import NotFound from './pages/not-found.page';
 
@@ -37,18 +37,18 @@ function AppRouter() {
   return (
     <>
       {/*{location.pathname !== '/login' && location.pathname !== '/not-found' && <Header />} no se pueda ver en login y notfound*/ }
-      {location.pathname == '/' && <HeaderSlide />}
-      {location.pathname == '/dashboard' && <HeaderSlideDashboard />}
-      {location.pathname == '/pending-requirements' && <HeaderSlidePendingRequirements />}
-      {location.pathname == '/closed-requirements' && <HeaderSlideCloseRequirements />}
-      {location.pathname == '/pending-requests' && <HeaderSlidePendingRequests />}
-      {location.pathname == '/closed-requests' && <HeaderSlideClosedRequests />}
-      {location.pathname == '/themes' && <HeaderSlideThemes />}
-      {location.pathname == '/users' && <HeaderSlideUser />}
-      {location.pathname == '/notifications' && <HeaderSlideNotifications />}
+      {location.pathname == '/' && <SlideLayout />}
+      {location.pathname == '/dashboard' && <SlideDashboard />}
+      {location.pathname == '/pending-requirements' && <SlidePendingRequirements />}
+      {location.pathname == '/closed-requirements' && <SlideCloseRequirements />}
+      {location.pathname == '/pending-requests' && <SlidePendingRequests />}
+      {location.pathname == '/closed-requests' && <SlideCloseRequests />}
+      {location.pathname == '/themes' && <SlideThemes />}
+      {location.pathname == '/users' && <SlideUser />}
+      {location.pathname == '/notifications' && <SlideNotifications />}
 
 
-      {location.pathname == '/pending-requirements/new-requirements' && <HeaderSlidePendingRequirements />}
+      {location.pathname == '/pending-requirements/new-requirements' && <SlidePendingRequirements />}
 
 
       <Routes>

@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import HeaderContainer from '../header-components/header-container.component';
-import FormLogo from '../form-logo.component';
-import HeaderMenuSection from '../header-components/header-menu-section.component';
-import HeaderHamburgerMenu from '../header-components/header-hamburger-menu.component';
-import HeaderItem from '../header-components/header-item.component';
-import HeaderLink from '../header-components/header-link.component';
-import HeaderCloseMenuIcon from '../header-components/header-close-menu-icon.components';
-import HeaderContent from '../header-components/header-content.component';
-import HeaderLogoSection from '../header-components/header-logo-section.component';
-import HeaderFooterContainer from '../header-components/header-footer-container.component';
-import HeaderSelectButton from '../header-components/header-select-button.components';
-import HeaderSlideBarGreen from '../header-components/header-sidebar-green.component';
+import HeaderContainer from '../../components/header-components/header-container.component';
+import FormLogo from '../../components/form-logo.component';
+import HeaderMenuSection from '../../components/header-components/header-menu-section.component';
+import HeaderHamburgerMenu from '../../components/header-components/header-hamburger-menu.component';
+import HeaderItem from '../../components/header-components/header-item.component';
+import HeaderLink from '../../components/header-components/header-link.component';
+import HeaderCloseMenuIcon from '../../components/header-components/header-close-menu-icon.components';
+import HeaderContent from '../../components/header-components/header-content.component';
+import HeaderLogoSection from '../../components/header-components/header-logo-section.component';
+import HeaderFooterContainer from '../../components/header-components/header-footer-container.component';
+import HeaderSelectButton from '../../components/header-components/header-select-button.components';
+import HeaderSlideBarGreen from '../../components/header-components/header-sidebar-green.component';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -28,7 +28,7 @@ import {
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 
-function HeaderSlideCloseRequirements() {
+function SlidePendingRequests() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -43,8 +43,8 @@ function HeaderSlideCloseRequirements() {
   };
 
   const handleRefresh = (event) => {
-    event.preventDefault(); // Evita la navegación predeterminada
-    window.location.href = '/closed-requirements'; // Forzar la recarga
+    event.preventDefault();
+    window.location.href = '/pending-requests';
   };
 
   return (
@@ -81,18 +81,18 @@ function HeaderSlideCloseRequirements() {
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-            <HeaderSelectButton href="/closed-requirements" onClick={handleRefresh}>
+            <HeaderLink href="/closed-requirements">
               <FontAwesomeIcon icon={faTags} style={{ marginRight: '0.7rem' }} />
               Req. Cerrados
-            </HeaderSelectButton>
-            <HeaderSlideBarGreen marginTop="315px" />
+            </HeaderLink>
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-            <HeaderLink href="/pending-requests">
+            <HeaderSelectButton href="/pending-requests" onClick={handleRefresh}>
               <FontAwesomeIcon icon={faScrewdriverWrench} style={{ marginRight: '0.7rem' }} />
               Sol. Pendientes
-            </HeaderLink>
+            </HeaderSelectButton>
+            <HeaderSlideBarGreen marginTop="380px" />
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
@@ -137,4 +137,4 @@ function HeaderSlideCloseRequirements() {
   );
 }
 
-export default HeaderSlideCloseRequirements;
+export default SlidePendingRequests;

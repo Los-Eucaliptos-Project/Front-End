@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import HeaderContainer from '../header-components/header-container.component';
-import FormLogo from '../form-logo.component';
-import HeaderMenuSection from '../header-components/header-menu-section.component';
-import HeaderHamburgerMenu from '../header-components/header-hamburger-menu.component';
-import HeaderItem from '../header-components/header-item.component';
-import HeaderLink from '../header-components/header-link.component';
-import HeaderCloseMenuIcon from '../header-components/header-close-menu-icon.components';
-import HeaderContent from '../header-components/header-content.component';
-import HeaderLogoSection from '../header-components/header-logo-section.component';
-import HeaderFooterContainer from '../header-components/header-footer-container.component';
-import HeaderSelectButton from '../header-components/header-select-button.components';
-import HeaderSlideBarGreen from '../header-components/header-sidebar-green.component';
+import HeaderContainer from '../../components/header-components/header-container.component';
+import FormLogo from '../../components/form-logo.component';
+import HeaderMenuSection from '../../components/header-components/header-menu-section.component';
+import HeaderHamburgerMenu from '../../components/header-components/header-hamburger-menu.component';
+import HeaderItem from '../../components/header-components/header-item.component';
+import HeaderLink from '../../components/header-components/header-link.component';
+import HeaderCloseMenuIcon from '../../components/header-components/header-close-menu-icon.components';
+import HeaderContent from '../../components/header-components/header-content.component';
+import HeaderLogoSection from '../../components/header-components/header-logo-section.component';
+import HeaderFooterContainer from '../../components/header-components/header-footer-container.component';
+import HeaderSelectButton from '../../components/header-components/header-select-button.components';
+import HeaderSlideBarGreen from '../../components/header-components/header-sidebar-green.component';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -28,7 +28,7 @@ import {
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 
-function HeaderSlidePendingRequests() {
+function SlideNotifications() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -44,7 +44,7 @@ function HeaderSlidePendingRequests() {
 
   const handleRefresh = (event) => {
     event.preventDefault();
-    window.location.href = '/pending-requests';
+    window.location.href = '/notifications';
   };
 
   return (
@@ -88,11 +88,10 @@ function HeaderSlidePendingRequests() {
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-            <HeaderSelectButton href="/pending-requests" onClick={handleRefresh}>
+            <HeaderLink href="/pending-requests">
               <FontAwesomeIcon icon={faScrewdriverWrench} style={{ marginRight: '0.7rem' }} />
               Sol. Pendientes
-            </HeaderSelectButton>
-            <HeaderSlideBarGreen marginTop="380px" />
+            </HeaderLink>
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
@@ -117,10 +116,11 @@ function HeaderSlidePendingRequests() {
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-            <HeaderLink href="/notifications">
+            <HeaderSelectButton href="/notifications" onClick={handleRefresh}>
               <FontAwesomeIcon icon={faBell} style={{ marginRight: '0.7rem' }} />
               Notificaciones
-            </HeaderLink>
+            </HeaderSelectButton>
+            <HeaderSlideBarGreen marginTop="660px" />
           </HeaderItem>
 
           <HeaderFooterContainer>
@@ -137,4 +137,4 @@ function HeaderSlidePendingRequests() {
   );
 }
 
-export default HeaderSlidePendingRequests;
+export default SlideNotifications;
