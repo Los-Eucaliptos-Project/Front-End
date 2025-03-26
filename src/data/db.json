@@ -1,115 +1,35 @@
 {
   "users": [
-    { "id": 1, "username": "admin", "password": "123456" },
-    { "id": 2, "username": "user1", "password": "password" }
+    { "id": 1, "email": "admin@gmail.com", "password": "123456" },
+    { "id": 2, "email": "user@gmail.com", "password": "password" }
   ],
-  
   "pending-requirements": [
     {
-      "id": "REQ-001",
-      "name": "Juan Pérez",
-      "status": "Pendiente",
-      "creationDate": "2023-10-26T10:00:00Z",
-      "vb1": "Pendiente",
-      "vb2": "Pendiente",
-      "vb3": "Pendiente"
-    },
-    {
-      "id": "REQ-002",
-      "name": "María García",
-      "status": "En Proceso",
-      "creationDate": "2023-10-25T14:30:00Z",
-      "vb1": "Aprobado",
-      "vb2": "Pendiente",
-      "vb3": "Pendiente"
-    },
-    {
-      "id": "REQ-003",
-      "name": "Carlos López",
-      "status": "Pendiente",
-      "creationDate": "2023-10-24T09:15:00Z",
-      "vb1": "Pendiente",
-      "vb2": "Pendiente",
-      "vb3": "Pendiente"
-    },
-    {
-      "id": "REQ-004",
-      "name": "Ana Martínez",
-      "status": "En Proceso",
-      "creationDate": "2023-10-23T16:45:00Z",
-      "vb1": "Aprobado",
-      "vb2": "Aprobado",
-      "vb3": "Pendiente"
-    },
-    {
-      "id": "REQ-005",
-      "name": "Pedro Rodríguez",
-      "status": "Pendiente",
-      "creationDate": "2023-10-22T11:20:00Z",
-      "vb1": "Pendiente",
-      "vb2": "Pendiente",
-      "vb3": "Pendiente"
-    },
-    {
-      "id": "REQ-006",
-      "name": "Laura Sánchez",
-      "status": "En Proceso",
-      "creationDate": "2023-10-21T13:00:00Z",
-      "vb1": "Aprobado",
-      "vb2": "Pendiente",
-      "vb3": "Pendiente"
-    },
-    {
-      "id": "REQ-007",
-      "name": "Diego González",
-      "status": "Pendiente",
-      "creationDate": "2023-10-20T17:30:00Z",
-      "vb1": "Pendiente",
-      "vb2": "Pendiente",
-      "vb3": "Pendiente"
-    },
-    {
-      "id": "REQ-008",
-      "name": "Sofía Torres",
-      "status": "En Proceso",
-      "creationDate": "2023-10-19T10:45:00Z",
-      "vb1": "Aprobado",
-      "vb2": "Aprobado",
-      "vb3": "Pendiente"
-    },
-    {
-      "id": "REQ-009",
-      "name": "Miguel Ramírez",
-      "status": "Pendiente",
-      "creationDate": "2023-10-18T15:10:00Z",
-      "vb1": "Pendiente",
-      "vb2": "Pendiente",
-      "vb3": "Pendiente"
-    },
-    {
-      "id": "REQ-1698422400003",
-      "name": "Juan Pérez",
-      "status": "Pendiente",
-      "creationDate": "2023-10-27T12:00:00.000Z",
-      "vb1": "Pendiente",
-      "vb2": "Pendiente",
-      "vb3": "Pendiente",
+      "id": "REQ-1698422400003", 
       "numeroRequerimiento": "000001",
+      "solicitante": "Juan Pérez",
+      "fecha": "2023-10-27",
       "motivo": "Necesito un nuevo monitor",
       "items": [
-        { "id": 1698422400000 },
-        { "id": 1698422400001 },
-        { "id": 1698422400002 }
+        {
+          "cantidad": "2",
+          "unidadMedida": "Unidades",
+          "descripcion": "Monitor 24 pulgadas",
+          "observaciones": "Preferiblemente marca Dell"
+        },
+        {
+          "cantidad": "1",
+          "unidadMedida": "Pieza",
+          "descripcion": "Teclado mecánico",
+          "observaciones": "Con retroiluminación RGB"
+        },
+        {
+          "cantidad": "5",
+          "unidadMedida": "Metros",
+          "descripcion": "Cable HDMI",
+          "observaciones": "Versión 2.0 o superior"
+        }
       ]
     }
-  ],
-  "numeroRequerimiento": "000001",
-  "solicitante": "Juan Pérez",
-  "fecha": "2023-10-27",
-  "motivo": "Necesito un nuevo monitor",
-  "items": [
-    { "id": 1698422400000 },
-    { "id": 1698422400001 },
-    { "id": 1698422400002 }
   ]
 }

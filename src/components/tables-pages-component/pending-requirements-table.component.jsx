@@ -21,20 +21,30 @@ import ContainerStylePageHeader from '../main-container-components/container-sty
 
 import SampleDataPendingRequests from '../../data/SampleData';
 
-import CustomModal from '../custom-modal-components/custom-modal-white-and-green.component';
-
 import { Link } from 'react-router-dom'
 
 import getRequirements from '../../services/pending-requeriments-service';
+
+import DownloadModal from '../../components/custom-modal-components/download-modal.component'
 
 function PendingRequirementsTableContainer() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedStatus, setSelectedStatus] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9;
 
-  const [downloandModalVisible, setDownloandModalVisible] = useState(false);
-  const [selectedRowId, setSelectedRowId] = useState(null);
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+  const [downloadApiUrl, setDownloadApiUrl] = useState('');
+
+  const handleDownloadClick = (rowId) => {
+    setDownloadApiUrl(`/api/requirements/${rowId}/download`); // Reemplaza con tu URL de API
+    setIsDownloadModalOpen(true);
+  };
+
+  const handleCloseDownloadModal = () => {
+    setIsDownloadModalOpen(false);
+  };
+
+  const itemsPerPage = 9;
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -44,20 +54,6 @@ function PendingRequirementsTableContainer() {
   const handleStatusSelect = (status) => {
     setSelectedStatus(status);
     setCurrentPage(1);
-  };
-
-  const handleDownloadClick = (rowId) => {
-    setSelectedRowId(rowId);
-    setDownloandModalVisible(true);
-  };
-
-  const handleConfirmDownload = () => {
-    console.log(`Descargando requerimiento para ${selectedRowId}`);
-    setDownloandModalVisible(false);
-  };
-
-  const handleCancelDownload = () => {
-    setDownloandModalVisible(false);
   };
 
   const calculateDaysPassed = (creationDate) => {
@@ -77,7 +73,6 @@ function PendingRequirementsTableContainer() {
       row.id?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       row.name?.toLowerCase().includes(searchTerm.toLowerCase());
 
-    // Filtra por estado
     const statusMatch = selectedStatus ? row.status === selectedStatus : true;
 
     return searchMatch && statusMatch;
@@ -104,6 +99,7 @@ function PendingRequirementsTableContainer() {
     }
     return pageNumbers;
   };
+  
 return (
   <TableStyleContainer>
     <ContainerStylePageHeader>
@@ -133,7 +129,6 @@ return (
           </SubmitButton>
         </Link>
 
-        
       </div>
     </ContainerStylePageHeader>
     <TableStyle>
@@ -207,15 +202,14 @@ return (
         Siguiente →
       </PaginatorButton>
     </Pagination>
-    <CustomModal
-        isOpen={downloandModalVisible}
-        onClose={handleCancelDownload}
-        title="¿Descargar el requerimiento?"
-        primaryButtonText="Descargar"
-        secondaryButtonText="Cancelar"
-        onPrimaryButtonClick={handleConfirmDownload}
-        onSecondaryButtonClick={handleCancelDownload}
-      />
+      <DownloadModal
+        isOpen={isDownloadModalOpen}
+        onClose={handleCloseDownloadModal}
+        title="Descargar Requerimiento"
+        apiUrl={downloadApiUrl}
+      >
+        <p>¿Seguro que quieres descargar este requerimiento?</p>
+      </DownloadModal>
   </TableStyleContainer>
 );
 }

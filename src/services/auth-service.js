@@ -17,12 +17,12 @@ const LoginUser = async (email, password, navigate) => {
     console.log("Login exitoso:", data);
     localStorage.setItem("token", data.token);
 
-    navigate("/dashboard"); // Redirige tras un login exitoso
-    return data; // Retorna los datos del usuario
+    navigate("/dashboard");
+    return data;
 
   } catch (err) {
     console.error("Error de inicio de sesión:", err.message);
-    throw err; // Lanza el error para que sea capturado en `Login`
+    throw err;
   }
 };
 

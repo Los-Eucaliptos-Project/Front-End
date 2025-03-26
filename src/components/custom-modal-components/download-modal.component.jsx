@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../../modules/custom-modal.module.css';
-import useDownloadData from '../hooks/useDownloadData';
+import useDownloadData from '../../hooks/use-dowload-data'
 
 function DownloadModal({
   isOpen,
