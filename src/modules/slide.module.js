@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import React from 'react';
-import styled from 'styled-components';
 
 export const HeaderSlideBarGreenContainer=styled.div` position: absolute;
 top: 0;
@@ -16,16 +14,6 @@ margin-top: $ {
 }
 
 ;
-`;
-
-export const HeaderSelectButton=styled.div` color: rgb(17, 92, 34);
-background-color: white;
-border-radius: 8px;
-font-weight: bold;
-font-size: 1.3rem;
-display: flex;
-align-items: center;
-justify-content: flex-start;
 `;
 
 export const HeaderMenuSection=styled.div` display: flex;
@@ -141,19 +129,6 @@ transition: opacity 0.3s ease;
     display: none;
 }
 
-`;
-
-export const HeaderFooterContainer=styled.div` display: flex;
-align-items: center;
-padding: 1rem 0;
-background-color: transparent;
-width: 100%;
-margin-top: 40%;
-`;
-
-export const HeaderContent=styled.div` display: flex;
-flex-direction: column;
-flex-grow: 1;
 `;
 
 export const HeaderContainer=styled.div` position: fixed;

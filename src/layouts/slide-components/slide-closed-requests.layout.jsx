@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import HeaderContainer from '../../components/header-components/header-container.component';
 import FormLogo from '../../components/form-logo.component';
 import HeaderMenuSection from '../../components/header-components/header-menu-section.component';
@@ -7,10 +6,7 @@ import HeaderHamburgerMenu from '../../components/header-components/header-hambu
 import HeaderItem from '../../components/header-components/header-item.component';
 import HeaderLink from '../../components/header-components/header-link.component';
 import HeaderCloseMenuIcon from '../../components/header-components/header-close-menu-icon.components';
-import HeaderContent from '../../components/header-components/header-content.component';
 import HeaderLogoSection from '../../components/header-components/header-logo-section.component';
-import HeaderFooterContainer from '../../components/header-components/header-footer-container.component';
-import HeaderSelectButton from '../../components/header-components/header-select-button.components';
 import HeaderSlideBarGreen from '../../components/header-components/header-sidebar-green.component';
 
 import styles from '../../modules/slide.module.css'
@@ -40,7 +36,7 @@ function SlideCloseRequests() {
 
   return (
     <HeaderContainer isMobile={isMobile}>
-      <HeaderContent>
+      <div className={styles.headerContent}>
         <HeaderLogoSection isMenuOpen={isMenuOpen}>
           <HeaderLink href="/">
             <FormLogo width="200px" height="80px" marginLeft="-1px" />
@@ -87,10 +83,10 @@ function SlideCloseRequests() {
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-            <HeaderSelectButton href="/closed-requests" onClick={handleRefresh}>
+            <div className={styles.headerSelectButton} href="/closed-requests" onClick={handleRefresh}>
               <FontAwesomeIcon icon={faCheck} style={{ marginRight: '0.7rem' }} />
               Sol. Cerrados
-            </HeaderSelectButton>
+            </div>
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
@@ -123,7 +119,7 @@ function SlideCloseRequests() {
             </HeaderItem>
           </div>
         </HeaderMenuSection>
-      </HeaderContent>
+      </div>
     </HeaderContainer>
   );
 }

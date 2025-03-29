@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import HeaderContainer from '../../components/header-components/header-container.component'
 import FormLogo from '../../components/form-logo.component';
 import HeaderMenuSection from '../../components/header-components/header-menu-section.component';
@@ -7,7 +6,6 @@ import HeaderHamburgerMenu from '../../components/header-components/header-hambu
 import HeaderItem from '../../components/header-components/header-item.component'
 import HeaderLink from '../../components/header-components/header-link.component'
 import HeaderCloseMenuIcon from '../../components/header-components/header-close-menu-icon.components'
-import HeaderContent from '../../components/header-components/header-content.component';
 import HeaderLogoSection from '../../components/header-components/header-logo-section.component'
 
 import styles from '../../modules/slide.module.css'
@@ -38,7 +36,7 @@ function SlideLayout() {
 
     return (
         <HeaderContainer isMobile={isMobile}>
-            <HeaderContent>
+            <div className={styles.headerContent}>
                 <HeaderLogoSection isMenuOpen={isMenuOpen}>
                     <HeaderLink href="/">
                         <FormLogo width="200px" height="80px" marginLeft="-1px" />
@@ -119,7 +117,7 @@ function SlideLayout() {
                         </HeaderItem>
                     </div>
                 </HeaderMenuSection>
-            </HeaderContent>
+            </div>
         </HeaderContainer>
     );
 }
