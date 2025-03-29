@@ -9,9 +9,10 @@ import HeaderLink from '../../components/header-components/header-link.component
 import HeaderCloseMenuIcon from '../../components/header-components/header-close-menu-icon.components';
 import HeaderContent from '../../components/header-components/header-content.component';
 import HeaderLogoSection from '../../components/header-components/header-logo-section.component';
-import HeaderFooterContainer from '../../components/header-components/header-footer-container.component';
 import HeaderSelectButton from '../../components/header-components/header-select-button.components';
 import HeaderSlideBarGreen from '../../components/header-components/header-sidebar-green.component';
+
+import styles from '../../modules/slide.module.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -112,14 +113,14 @@ function SlidePendingRequests() {
             </HeaderLink>
           </HeaderItem>
 
-          <HeaderFooterContainer>
+          <div className = {styles.HeaderFooterContainer}>
             <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen} className="logout-item">
               <HeaderLink href="/login">
                 <FontAwesomeIcon icon={faPowerOff} style={{ marginRight: '0.5rem' }} />
                 Salir
               </HeaderLink>
             </HeaderItem>
-          </HeaderFooterContainer>
+          </div>
         </HeaderMenuSection>
       </HeaderContent>
     </HeaderContainer>

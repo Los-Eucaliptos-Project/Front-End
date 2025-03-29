@@ -13,6 +13,8 @@ import HeaderFooterContainer from '../../components/header-components/header-foo
 import HeaderSelectButton from '../../components/header-components/header-select-button.components';
 import HeaderSlideBarGreen from '../../components/header-components/header-sidebar-green.component';
 
+import styles from '../../modules/slide.module.css'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faThLarge,
@@ -32,7 +34,7 @@ import useHeaderSlide from '../../hooks/use-header-slide.hook';
 import usePageRefresh from '../../hooks/use-page-refresh.hook,jsx';
 
 function SlideCloseRequests() {
-  
+
   const { isMobile, isMenuOpen, toggleMenu } = useHeaderSlide();
   const handleRefresh = usePageRefresh('/closed-requests');
 
@@ -112,14 +114,14 @@ function SlideCloseRequests() {
             </HeaderLink>
           </HeaderItem>
 
-          <HeaderFooterContainer>
-            <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen} className="logout-item">
+          <div className = {styles.HeaderFooterContainer}>
+              <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen} className="logout-item">
               <HeaderLink href="/login">
                 <FontAwesomeIcon icon={faPowerOff} style={{ marginRight: '0.5rem' }} />
                 Salir
               </HeaderLink>
             </HeaderItem>
-          </HeaderFooterContainer>
+          </div>
         </HeaderMenuSection>
       </HeaderContent>
     </HeaderContainer>
