@@ -5,11 +5,12 @@ import HeaderMenuSection from '../../components/header-components/header-menu-se
 import HeaderHamburgerMenu from '../../components/header-components/header-hamburger-menu.component';
 import HeaderItem from '../../components/header-components/header-item.component';
 import HeaderLink from '../../components/header-components/header-link.component';
-import HeaderCloseMenuIcon from '../../components/header-components/header-close-menu-icon.components';
 import HeaderLogoSection from '../../components/header-components/header-logo-section.component';
-import HeaderSlideBarGreen from '../../components/header-components/header-sidebar-green.component';
+import SlideBarGreen from './slide-components/slide-side-bar-green.component.jsx';
+
 
 import styles from '../../modules/slide.module.css'
+import { SlideCloseMenuIcon } from '../../styled/slide.styles.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -27,16 +28,16 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import useHeaderSlide from '../../hooks/use-header-slide.hook';
-import usePageRefresh from '../../hooks/use-page-refresh.hook,jsx';
+import usePageRefresh from '../../hooks/use-page-refresh.hook.jsx';
 
-function SlideUser() {
+function SlideCloseRequests() {
 
   const { isMobile, isMenuOpen, toggleMenu } = useHeaderSlide();
-  const handleRefresh = usePageRefresh('/users');
+  const handleRefresh = usePageRefresh('/closed-requests');
 
   return (
     <HeaderContainer isMobile={isMobile}>
-      <div className={styles.headerContent}>
+      <div className={styles.slideContent}>
         <HeaderLogoSection isMenuOpen={isMenuOpen}>
           <HeaderLink href="/">
             <FormLogo width="200px" height="80px" marginLeft="-1px" />
@@ -47,11 +48,11 @@ function SlideUser() {
           <FontAwesomeIcon icon={faBars} />
         </HeaderHamburgerMenu>
 
-        {isMenuOpen && (
-          <HeaderCloseMenuIcon onClick={toggleMenu}>
-            <FontAwesomeIcon icon={faTimes} />
-          </HeaderCloseMenuIcon>
-        )}
+          {isMenuOpen && (
+             <SlideCloseMenuIcon onClick={toggleMenu}>
+               <FontAwesomeIcon icon={faTimes} />
+             </SlideCloseMenuIcon>
+           )}
 
         <HeaderMenuSection isMobile={isMobile} isMenuOpen={isMenuOpen}>
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
@@ -72,6 +73,7 @@ function SlideUser() {
               <FontAwesomeIcon icon={faTags} style={{ marginRight: '0.7rem' }} />
               Req. Cerrados
             </HeaderLink>
+            <SlideBarGreen marginTop="315px" />
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
@@ -82,10 +84,10 @@ function SlideUser() {
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-            <HeaderLink href="/closed-requests">
+            <div className={styles.slideSelectButton} href="/closed-requests" onClick={handleRefresh}>
               <FontAwesomeIcon icon={faCheck} style={{ marginRight: '0.7rem' }} />
               Sol. Cerrados
-            </HeaderLink>
+            </div>
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
@@ -96,11 +98,10 @@ function SlideUser() {
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-            <div className={styles.headerSelectButton} href="/users" onClick={handleRefresh}>
+            <HeaderLink href="/users">
               <FontAwesomeIcon icon={faUser} style={{ marginRight: '0.7rem' }} />
               Usuarios
-            </div>
-            <HeaderSlideBarGreen marginTop="590px" />
+            </HeaderLink>
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
@@ -110,8 +111,8 @@ function SlideUser() {
             </HeaderLink>
           </HeaderItem>
 
-          <div className = {styles.HeaderFooterContainer}>
-            <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen} className="logout-item">
+          <div className = {styles.slideFooterContainer}>
+              <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen} className="logout-item">
               <HeaderLink href="/login">
                 <FontAwesomeIcon icon={faPowerOff} style={{ marginRight: '0.5rem' }} />
                 Salir
@@ -124,4 +125,4 @@ function SlideUser() {
   );
 }
 
-export default SlideUser;
+export default SlideCloseRequests;

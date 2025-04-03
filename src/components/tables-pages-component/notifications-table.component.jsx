@@ -5,7 +5,7 @@ import SearchInputFilePages from '../search-input-file-pages.component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import FilterMenu from '../filter-menu.component';
-import CustomSwitch from '../custom-switch-style.component'
+//import CustomSwitch from '../custom-switch-style.component'
 
 import Pagination from '../paginator-components/pagination.component';
 import PaginatorButton from '../paginator-components/paginator-button.component';
@@ -125,30 +125,7 @@ function NotificationsTable() {
             <tr key={index}>
               <TableStyleDatosRow>{row.fulName}</TableStyleDatosRow>
               <TableStyleDatosRow>{row.email}</TableStyleDatosRow>
-              <TableStyleDatosRow>
-                <CustomSwitch
-                  checked={row.creation || false}
-                  onChange={(e) =>
-                    handleSwitchChange(row.id, 'creation', e.target.checked)
-                  }
-                />
-              </TableStyleDatosRow>
-              <TableStyleDatosRow>
-                <CustomSwitch
-                  checked={row.firma || false}
-                  onChange={(e) =>
-                    handleSwitchChange(row.id, 'firma', e.target.checked)
-                  }
-                />
-              </TableStyleDatosRow>
-              <TableStyleDatosRow>
-                <CustomSwitch
-                  checked={row.rechazo || false}
-                  onChange={(e) =>
-                    handleSwitchChange(row.id, 'rechazo', e.target.checked)
-                  }
-                />
-              </TableStyleDatosRow>
+             
             </tr>
           ))}
         </tbody>

@@ -5,11 +5,11 @@ import HeaderMenuSection from '../../components/header-components/header-menu-se
 import HeaderHamburgerMenu from '../../components/header-components/header-hamburger-menu.component';
 import HeaderItem from '../../components/header-components/header-item.component';
 import HeaderLink from '../../components/header-components/header-link.component';
-import HeaderCloseMenuIcon from '../../components/header-components/header-close-menu-icon.components';
 import HeaderLogoSection from '../../components/header-components/header-logo-section.component';
-import HeaderSlideBarGreen from '../../components/header-components/header-sidebar-green.component';
+import SlideBarGreen from './slide-components/slide-side-bar-green.component.jsx';
 
 import styles from '../../modules/slide.module.css'
+import { SlideCloseMenuIcon } from '../../styled/slide.styles.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -27,17 +27,17 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import useHeaderSlide from '../../hooks/use-header-slide.hook';
-import usePageRefresh from '../../hooks/use-page-refresh.hook,jsx';
+import usePageRefresh from '../../hooks/use-page-refresh.hook.jsx';
 
-function SlidePendingRequests() {
+function SlidePendingRequirements() {
 
-  const { isMobile, isMenuOpen, toggleMenu } = useHeaderSlide();
-    const handleRefresh = usePageRefresh('/pending-requests');
+    const { isMobile, isMenuOpen, toggleMenu } = useHeaderSlide();
+    const handleRefresh = usePageRefresh('/pending-requirements');
 
   return (
     <HeaderContainer isMobile={isMobile}>
-      <div className={styles.headerContent}>
-        <HeaderLogoSection isMenuOpen={isMenuOpen}> 
+      <div className={styles.slideContent}>
+        <HeaderLogoSection isMenuOpen={isMenuOpen}>
           <HeaderLink href="/">
             <FormLogo width="200px" height="80px" marginLeft="-1px" />
           </HeaderLink>
@@ -47,11 +47,11 @@ function SlidePendingRequests() {
           <FontAwesomeIcon icon={faBars} />
         </HeaderHamburgerMenu>
 
-        {isMenuOpen && (
-          <HeaderCloseMenuIcon onClick={toggleMenu}>
-            <FontAwesomeIcon icon={faTimes} />
-          </HeaderCloseMenuIcon>
-        )}
+         {isMenuOpen && (
+            <SlideCloseMenuIcon onClick={toggleMenu}>
+              <FontAwesomeIcon icon={faTimes} />
+            </SlideCloseMenuIcon>
+          )}    
 
         <HeaderMenuSection isMobile={isMobile} isMenuOpen={isMenuOpen}>
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
@@ -60,11 +60,13 @@ function SlidePendingRequests() {
               Dashboard
             </HeaderLink>
           </HeaderItem>
+
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-            <HeaderLink href="/pending-requirements">
+            <div className={styles.slideSelectButton} href="/pending-requirements" onClick={handleRefresh}>
               <FontAwesomeIcon icon={faTag} style={{ marginRight: '0.7rem' }} />
               Req. Pendientes
-            </HeaderLink>
+            </div>
+            <SlideBarGreen marginTop="240px" />
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
@@ -75,11 +77,10 @@ function SlidePendingRequests() {
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-            <div className={styles.headerSelectButton} href="/pending-requests" onClick={handleRefresh}>
+            <HeaderLink href="/pending-requests">
               <FontAwesomeIcon icon={faScrewdriverWrench} style={{ marginRight: '0.7rem' }} />
               Sol. Pendientes
-            </div>
-            <HeaderSlideBarGreen marginTop="380px" />
+            </HeaderLink>
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
@@ -110,7 +111,7 @@ function SlidePendingRequests() {
             </HeaderLink>
           </HeaderItem>
 
-          <div className = {styles.HeaderFooterContainer}>
+          <div className = {styles.slideFooterContainer}>
             <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen} className="logout-item">
               <HeaderLink href="/login">
                 <FontAwesomeIcon icon={faPowerOff} style={{ marginRight: '0.5rem' }} />
@@ -124,4 +125,4 @@ function SlidePendingRequests() {
   );
 }
 
-export default SlidePendingRequests;
+export default SlidePendingRequirements;

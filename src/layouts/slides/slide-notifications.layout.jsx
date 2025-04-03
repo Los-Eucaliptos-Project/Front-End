@@ -5,11 +5,11 @@ import HeaderMenuSection from '../../components/header-components/header-menu-se
 import HeaderHamburgerMenu from '../../components/header-components/header-hamburger-menu.component';
 import HeaderItem from '../../components/header-components/header-item.component';
 import HeaderLink from '../../components/header-components/header-link.component';
-import HeaderCloseMenuIcon from '../../components/header-components/header-close-menu-icon.components';
 import HeaderLogoSection from '../../components/header-components/header-logo-section.component';
-import HeaderSlideBarGreen from '../../components/header-components/header-sidebar-green.component';
+import SlideBarGreen from './slide-components/slide-side-bar-green.component.jsx';
 
 import styles from '../../modules/slide.module.css'
+import { SlideCloseMenuIcon } from '../../styled/slide.styles.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -27,16 +27,16 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import useHeaderSlide from '../../hooks/use-header-slide.hook';
-import usePageRefresh from '../../hooks/use-page-refresh.hook,jsx';
+import usePageRefresh from '../../hooks/use-page-refresh.hook.jsx';
 
-function SlideCloseRequirements() {
+function SlideNotifications() {
 
-  const { isMobile, isMenuOpen, toggleMenu } = useHeaderSlide();
-  const handleRefresh = usePageRefresh('/closed-requirements');
+    const { isMobile, isMenuOpen, toggleMenu } = useHeaderSlide();
+    const handleRefresh = usePageRefresh('/notifications');
 
   return (
     <HeaderContainer isMobile={isMobile}>
-      <div className={styles.headerContent}>
+      <div className={styles.slideContent}>
         <HeaderLogoSection isMenuOpen={isMenuOpen}>
           <HeaderLink href="/">
             <FormLogo width="200px" height="80px" marginLeft="-1px" />
@@ -47,11 +47,11 @@ function SlideCloseRequirements() {
           <FontAwesomeIcon icon={faBars} />
         </HeaderHamburgerMenu>
 
-        {isMenuOpen && (
-          <HeaderCloseMenuIcon onClick={toggleMenu}>
-            <FontAwesomeIcon icon={faTimes} />
-          </HeaderCloseMenuIcon>
-        )}
+         {isMenuOpen && (
+            <SlideCloseMenuIcon onClick={toggleMenu}>
+              <FontAwesomeIcon icon={faTimes} />
+            </SlideCloseMenuIcon>
+          )}      
 
         <HeaderMenuSection isMobile={isMobile} isMenuOpen={isMenuOpen}>
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
@@ -68,11 +68,10 @@ function SlideCloseRequirements() {
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-            <div className={styles.headerSelectButton}  href="/closed-requirements" onClick={handleRefresh}>
+            <HeaderLink href="/closed-requirements">
               <FontAwesomeIcon icon={faTags} style={{ marginRight: '0.7rem' }} />
               Req. Cerrados
-            </div>
-            <HeaderSlideBarGreen marginTop="315px" />
+            </HeaderLink>
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
@@ -104,24 +103,25 @@ function SlideCloseRequirements() {
           </HeaderItem>
 
           <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-            <HeaderLink href="/notifications">
+            <div className={styles.slideSelectButton} href="/notifications" onClick={handleRefresh}>
               <FontAwesomeIcon icon={faBell} style={{ marginRight: '0.7rem' }} />
               Notificaciones
-            </HeaderLink>
+            </div>
+            <SlideBarGreen marginTop="660px" />
           </HeaderItem>
 
-          <div className = {styles.HeaderFooterContainer}>
+          <div className = {styles.slideFooterContainer}>
             <HeaderItem isMobile={isMobile} isMenuOpen={isMenuOpen} className="logout-item">
               <HeaderLink href="/login">
                 <FontAwesomeIcon icon={faPowerOff} style={{ marginRight: '0.5rem' }} />
                 Salir
               </HeaderLink>
             </HeaderItem>
-            </div>
+          </div>
         </HeaderMenuSection>
       </div>
     </HeaderContainer>
   );
 }
 
-export default SlideCloseRequirements;
+export default SlideNotifications;

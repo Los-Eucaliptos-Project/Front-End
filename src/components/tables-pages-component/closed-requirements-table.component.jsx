@@ -4,7 +4,7 @@ import SearchInputFilePages from '../search-input-file-pages.component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter, faArrowRight, faDownload } from '@fortawesome/free-solid-svg-icons';
 import FilterMenu from '../filter-menu.component';
-import DateFilterInputPages from '../date-filter-input-pages.component';
+import DateFilterInput from '../filters-menu/date-filter-input.component';
 
 import Pagination from '../paginator-components/pagination.component';
 import PaginatorButton from '../paginator-components/paginator-button.component';
@@ -107,7 +107,7 @@ function ClosedRequirementsTableContainer() {
           </FilterMenu>
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <DateFilterInputPages
+          <DateFilterInput
             selectedDate={selectedDate}
             onChange={handleDateChange}
           />

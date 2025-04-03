@@ -17,15 +17,15 @@ import Themes from './pages/themes.page.jsx'
 import Users from './pages/users-page.jsx'
 import Notifications from './pages/notifications.page.jsx';
 
-import SlideLayout from './layouts/slide-components/slide.layout.jsx';
-import SlideDashboard from './layouts/slide-components/slide-dashboard.layout.jsx';
-import SlidePendingRequirements from './layouts/slide-components/slide-pending-requirements.layout.jsx';
-import SlideCloseRequirements from './layouts/slide-components/slide-closed-requirements.layout.jsx';
-import SlidePendingRequests from './layouts/slide-components/slide-pending-requests.layout.jsx';
-import SlideCloseRequests from './layouts/slide-components/slide-closed-requests.layout.jsx';
-import SlideThemes from './layouts/slide-components/slide-themes.layout.jsx';
-import SlideUser from './layouts/slide-components/slide-users.layout.jsx';
-import SlideNotifications from './layouts/slide-components/slide-notifications.layout.jsx';
+import SlideLayout from './layouts/slides/slide.layout.jsx';
+import SlideDashboard from './layouts/slides/slide-dashboard.layout.jsx';
+import SlidePendingRequirements from './layouts/slides/slide-pending-requirements.layout.jsx';
+import SlideCloseRequirements from './layouts/slides/slide-closed-requirements.layout.jsx';
+import SlidePendingRequests from './layouts/slides/slide-pending-requests.layout.jsx';
+import SlideCloseRequests from './layouts/slides/slide-closed-requests.layout.jsx';
+import SlideThemes from './layouts/slides/slide-themes.layout.jsx';
+import SlideUser from './layouts/slides/slide-users.layout.jsx';
+import SlideNotifications from './layouts/slides/slide-notifications.layout.jsx';
 
 import NotFound from './pages/not-found.page';
 

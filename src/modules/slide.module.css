@@ -1,4 +1,4 @@
-.headerFooterContainer {
+.slideFooterContainer {
     display: flex;
     align-items: center;
     padding: 1rem 0;
@@ -7,7 +7,7 @@
     margin-top: 40%;
 }
 
-.headerSelectButton {
+.slideSelectButton {
     color: rgb(17, 92, 34);
     background-color: white;
     border-radius: 8px;
@@ -18,7 +18,7 @@
     justify-content: flex-start;
 }
 
-.headerContent {
+.slideContent {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
