@@ -10,7 +10,6 @@ export const SlideBarGreenContainer = styled.div`
   margin-top: ${({ marginTop }) => marginTop};
 `;
 
-
 export const SlideCloseMenuIcon = styled.div`
     display: block;
     cursor: pointer;
@@ -49,7 +48,6 @@ export const SlideItem = styled.div`
         margin-top: auto;
     }
 `;
-
 
 export const SlideMenuSection = styled.div`
     display: flex;
@@ -97,7 +95,6 @@ export const SlideHamburgerMenu = styled.div`
     }
 `;
 
-
 export const SlideLogoSection = styled.div`
     display: flex;
     justify-content: center;
@@ -109,4 +106,51 @@ export const SlideLogoSection = styled.div`
     }
 `;
 
+export const SlideLink = styled.a`
+    color: rgb(20, 41, 89);
+    text-decoration: none;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 500;
 
+    &:hover {
+        color: rgb(41, 105, 55);
+    }
+
+    @media (max-width: 768px) {
+        font-size: 1rem;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 0.9rem;
+    }
+`;
+
+export const SlideContainer = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 15rem;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    padding: 1.5rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+    transition: width 0.3s ease;
+
+    @media (max-width: 992px) {
+        width: 5rem;
+        padding: 1rem;
+    }
+
+    @media (max-width: 992px) {
+        width: 100%;
+        height: auto;
+        padding: 0.8rem;
+    }
+`;

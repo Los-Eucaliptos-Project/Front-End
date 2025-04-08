@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import HeaderContainer from '../../components/header-components/header-container.component'
 import FormLogo from '../../components/form-logo.component';
-import HeaderLink from '../../components/header-components/header-link.component'
-
 
 import styles from '../../modules/slide.module.css'
 import { SlideCloseMenuIcon } from '../../styled/slide.styles.js';
@@ -10,6 +7,8 @@ import { SlideItem } from '../../styled/slide.styles.js';
 import { SlideMenuSection } from '../../styled/slide.styles.js';
 import { SlideHamburgerMenu } from '../../styled/slide.styles.js';
 import { SlideLogoSection } from '../../styled/slide.styles.js';
+import { SlideLink } from '../../styled/slide.styles.js';
+import { SlideContainer } from '../../styled/slide.styles.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -39,9 +38,9 @@ function SlideLayout() {
         <HeaderContainer isMobile={isMobile}>
             <div className={styles.slideContent}>
                 <SlideLogoSection isMenuOpen={isMenuOpen}>
-                    <HeaderLink href="/">
+                    <SlideLink href="/">
                         <FormLogo width="200px" height="80px" marginLeft="-1px" />
-                    </HeaderLink>
+                    </SlideLink>
                 </SlideLogoSection>
 
                 <SlideHamburgerMenu onClick={toggleMenu}>
@@ -56,67 +55,67 @@ function SlideLayout() {
                        
                 <SlideMenuSection isMobile={isMobile} isMenuOpen={isMenuOpen}>
                     <SlideItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-                        <HeaderLink href="/dashboard">
+                        <SlideLink href="/dashboard">
                             <FontAwesomeIcon icon={faThLarge} style={{ marginRight: '0.7rem' }} />
                             Dashboard
-                        </HeaderLink>
+                        </SlideLink>
                     </SlideItem>
 
                     <SlideItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-                        <HeaderLink href="/pending-requirements">
+                        <SlideLink href="/pending-requirements">
                             <FontAwesomeIcon icon={faTag} style={{ marginRight: '0.7rem' }} />
                             Req. Pendientes
-                        </HeaderLink>
+                        </SlideLink>
                     </SlideItem>
 
                     <SlideItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-                        <HeaderLink href="/closed-requirements">
+                        <SlideLink href="/closed-requirements">
                             <FontAwesomeIcon icon={faTags} style={{ marginRight: '0.7rem' }} />
                             Req. Cerrados
-                        </HeaderLink>
+                        </SlideLink>
                     </SlideItem>
 
                     <SlideItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-                        <HeaderLink href="/pending-requests">
+                        <SlideLink href="/pending-requests">
                             <FontAwesomeIcon icon={faScrewdriverWrench} style={{ marginRight: '0.7rem' }} />
                             Sol. Pendientes
-                        </HeaderLink>
+                        </SlideLink>
                     </SlideItem>
 
                     <SlideItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-                        <HeaderLink href="/closed-requests">
+                        <SlideLink href="/closed-requests">
                             <FontAwesomeIcon icon={faCheck} style={{ marginRight: '0.7rem' }} />
                             Sol. Cerrados
-                        </HeaderLink>
+                        </SlideLink>
                     </SlideItem>
 
                     <SlideItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-                        <HeaderLink href="/themes">
+                        <SlideLink href="/themes">
                             <FontAwesomeIcon icon={faBarsProgress} style={{ marginRight: '0.7rem' }} />
                             Temas
-                        </HeaderLink>
+                        </SlideLink>
                     </SlideItem>
 
                     <SlideItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-                        <HeaderLink href="/users">
+                        <SlideLink href="/users">
                             <FontAwesomeIcon icon={faUser} style={{ marginRight: '0.7rem' }} />
                             Usuarios
-                        </HeaderLink>
+                        </SlideLink>
                     </SlideItem>
 
                     <SlideItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
-                        <HeaderLink href="/notifications">
+                        <SlideLink href="/notifications">
                             <FontAwesomeIcon icon={faBell} style={{ marginRight: '0.7rem' }} />
                             Notificaciones
-                        </HeaderLink>
+                        </SlideLink>
                     </SlideItem>
 
                     <div className = {styles.slideFooterContainer}>
                         <SlideItem isMobile={isMobile} isMenuOpen={isMenuOpen} className="logout-item">
-                            <HeaderLink href="/logout">
+                            <SlideLink href="/logout">
                                 <FontAwesomeIcon icon={faPowerOff} style={{ marginRight: '0.5rem' }} />
                                 Salir
-                            </HeaderLink>
+                            </SlideLink>
                         </SlideItem>
                     </div>
                 </SlideMenuSection>
