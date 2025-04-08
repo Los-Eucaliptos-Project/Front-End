@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import HeaderContainer from '../../components/header-components/header-container.component';
 import FormLogo from '../../components/form-logo.component';
 import HeaderLink from '../../components/header-components/header-link.component';
-import HeaderLogoSection from '../../components/header-components/header-logo-section.component';
 import SlideBarGreen from './slide-components/slide-side-bar-green.component.jsx';
 
 import styles from '../../modules/slide.module.css'
@@ -11,6 +10,7 @@ import { SlideCloseMenuIcon } from '../../styled/slide.styles.js';
 import { SlideItem } from '../../styled/slide.styles.js';
 import { SlideMenuSection } from '../../styled/slide.styles.js';
 import { SlideHamburgerMenu } from '../../styled/slide.styles.js';
+import { SlideLogoSection } from '../../styled/slide.styles.js';
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -39,11 +39,11 @@ function SlideCloseRequirements() {
   return (
     <HeaderContainer isMobile={isMobile}>
       <div className={styles.slideContent}>
-        <HeaderLogoSection isMenuOpen={isMenuOpen}>
+        <SlideLogoSection isMenuOpen={isMenuOpen}>
           <HeaderLink href="/">
             <FormLogo width="200px" height="80px" marginLeft="-1px" />
           </HeaderLink>
-        </HeaderLogoSection>
+        </SlideLogoSection>
 
         <SlideHamburgerMenu onClick={toggleMenu}>
           <FontAwesomeIcon icon={faBars} />
