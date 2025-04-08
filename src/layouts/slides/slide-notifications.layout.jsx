@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import HeaderContainer from '../../components/header-components/header-container.component';
 import FormLogo from '../../components/form-logo.component';
-import HeaderHamburgerMenu from '../../components/header-components/header-hamburger-menu.component';
 import HeaderLink from '../../components/header-components/header-link.component';
 import HeaderLogoSection from '../../components/header-components/header-logo-section.component';
 import SlideBarGreen from './slide-components/slide-side-bar-green.component.jsx';
@@ -11,6 +10,7 @@ import styles from '../../modules/slide.module.css'
 import { SlideCloseMenuIcon } from '../../styled/slide.styles.js';
 import { SlideItem } from '../../styled/slide.styles.js';
 import { SlideMenuSection } from '../../styled/slide.styles.js';
+import { SlideHamburgerMenu } from '../../styled/slide.styles.js';
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -45,9 +45,9 @@ function SlideNotifications() {
           </HeaderLink>
         </HeaderLogoSection>
 
-        <HeaderHamburgerMenu onClick={toggleMenu}>
+        <SlideHamburgerMenu onClick={toggleMenu}>
           <FontAwesomeIcon icon={faBars} />
-        </HeaderHamburgerMenu>
+        </SlideHamburgerMenu>
 
          {isMenuOpen && (
             <SlideCloseMenuIcon onClick={toggleMenu}>
@@ -55,7 +55,7 @@ function SlideNotifications() {
             </SlideCloseMenuIcon>
           )}      
 
-        <HeaderMenuSection isMobile={isMobile} isMenuOpen={isMenuOpen}>
+        <SlideMenuSection isMobile={isMobile} isMenuOpen={isMenuOpen}>
           <SlideItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
             <HeaderLink href="/dashboard">
               <FontAwesomeIcon icon={faThLarge} style={{ marginRight: '0.7rem' }} />
@@ -120,7 +120,7 @@ function SlideNotifications() {
               </HeaderLink>
             </SlideItem>
           </div>
-        </HeaderMenuSection>
+        </SlideMenuSection>
       </div>
     </HeaderContainer>
   );

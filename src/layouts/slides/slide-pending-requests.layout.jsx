@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import HeaderContainer from '../../components/header-components/header-container.component';
 import FormLogo from '../../components/form-logo.component';
-import HeaderHamburgerMenu from '../../components/header-components/header-hamburger-menu.component';
 import HeaderLink from '../../components/header-components/header-link.component';
 import HeaderLogoSection from '../../components/header-components/header-logo-section.component';
 import SlideBarGreen from './slide-components/slide-side-bar-green.component.jsx';
@@ -11,6 +10,7 @@ import styles from '../../modules/slide.module.css'
 import { SlideCloseMenuIcon } from '../../styled/slide.styles.js';
 import { SlideItem } from '../../styled/slide.styles.js';
 import { SlideMenuSection } from '../../styled/slide.styles.js';
+import { SlideHamburgerMenu } from '../../styled/slide.styles.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -44,9 +44,9 @@ function SlidePendingRequests() {
           </HeaderLink>
         </HeaderLogoSection>
 
-        <HeaderHamburgerMenu onClick={toggleMenu}>
+        <SlideHamburgerMenu onClick={toggleMenu}>
           <FontAwesomeIcon icon={faBars} />
-        </HeaderHamburgerMenu>
+        </SlideHamburgerMenu>
         
         {isMenuOpen && (
            <SlideCloseMenuIcon onClick={toggleMenu}>
