@@ -23,7 +23,6 @@ import SampleDataPendingRequests from '../../data/SampleData';
 
 import { Link } from 'react-router-dom'
 
-import getRequirements from '../../services/pending-requeriments-service';
 
 import DownloadModal from '../../components/custom-modal-components/download-modal.component'
 

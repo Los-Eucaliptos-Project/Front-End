@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import FormLogo from '../../components/form-logo.component';
+import SlideBarGreen from './slide-components/slide-side-bar-green.component.jsx';
+
+import TemplateIcon from '../../components/icons/template-icon.icon.jsx';
+import icons from '../../utils/icons-library.js';
 
 import styles from '../../modules/slide.module.css'
+
 import { SlideCloseMenuIcon } from '../../styled/slide.styles.js';
 import { SlideItem } from '../../styled/slide.styles.js';
 import { SlideMenuSection } from '../../styled/slide.styles.js';
@@ -10,24 +15,8 @@ import { SlideLogoSection } from '../../styled/slide.styles.js';
 import { SlideLink } from '../../styled/slide.styles.js';
 import { SlideContainer } from '../../styled/slide.styles.js';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faThLarge,
-  faPowerOff,
-  faUser,
-  faBell,
-  faCheck,
-  faScrewdriverWrench,
-  faBarsProgress,
-  faTag,
-  faTags,
-  faBars,
-  faTimes,
-} from '@fortawesome/free-solid-svg-icons';
-
 import useHeaderSlide from '../../hooks/use-header-slide.hook';
 import usePageRefresh from '../../hooks/use-page-refresh.hook.jsx';
-
 
 function SlideLayout() {
     
@@ -35,7 +24,7 @@ function SlideLayout() {
     const handleRefresh = usePageRefresh('/');
 
     return (
-        <HeaderContainer isMobile={isMobile}>
+        <SlideContainer isMobile={isMobile}>
             <div className={styles.slideContent}>
                 <SlideLogoSection isMenuOpen={isMenuOpen}>
                     <SlideLink href="/">
@@ -44,7 +33,7 @@ function SlideLayout() {
                 </SlideLogoSection>
 
                 <SlideHamburgerMenu onClick={toggleMenu}>
-                    <FontAwesomeIcon icon={faBars} />
+                    <TemplateIcon icon={icons.faBars} />
                 </SlideHamburgerMenu>
 
             {isMenuOpen && (
@@ -56,56 +45,56 @@ function SlideLayout() {
                 <SlideMenuSection isMobile={isMobile} isMenuOpen={isMenuOpen}>
                     <SlideItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
                         <SlideLink href="/dashboard">
-                            <FontAwesomeIcon icon={faThLarge} style={{ marginRight: '0.7rem' }} />
+                        <TemplateIcon icon={icons.faThLarge} style={{ marginRight: '0.7rem' }} />
                             Dashboard
                         </SlideLink>
                     </SlideItem>
 
                     <SlideItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
                         <SlideLink href="/pending-requirements">
-                            <FontAwesomeIcon icon={faTag} style={{ marginRight: '0.7rem' }} />
+                                <TemplateIcon icon={icons.faTags}  style={{ marginRight: '0.7rem' }} />
                             Req. Pendientes
                         </SlideLink>
                     </SlideItem>
 
                     <SlideItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
                         <SlideLink href="/closed-requirements">
-                            <FontAwesomeIcon icon={faTags} style={{ marginRight: '0.7rem' }} />
+                            <TemplateIcon icon={icons.faTags}  style={{ marginRight: '0.7rem' }} />
                             Req. Cerrados
                         </SlideLink>
                     </SlideItem>
 
                     <SlideItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
                         <SlideLink href="/pending-requests">
-                            <FontAwesomeIcon icon={faScrewdriverWrench} style={{ marginRight: '0.7rem' }} />
+                            <TemplateIcon icon={icons.faScrewdriverWrench} style={{ marginRight: '0.7rem' }} />
                             Sol. Pendientes
                         </SlideLink>
                     </SlideItem>
 
                     <SlideItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
                         <SlideLink href="/closed-requests">
-                            <FontAwesomeIcon icon={faCheck} style={{ marginRight: '0.7rem' }} />
+              <TemplateIcon icon={icons.faCheck} style={{ marginRight: '0.7rem' }} />
                             Sol. Cerrados
                         </SlideLink>
                     </SlideItem>
 
                     <SlideItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
                         <SlideLink href="/themes">
-                            <FontAwesomeIcon icon={faBarsProgress} style={{ marginRight: '0.7rem' }} />
+                            <TemplateIcon icon={icons.faBarsProgress} style={{ marginRight: '0.7rem' }} />
                             Temas
                         </SlideLink>
                     </SlideItem>
 
                     <SlideItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
                         <SlideLink href="/users">
-                            <FontAwesomeIcon icon={faUser} style={{ marginRight: '0.7rem' }} />
+                            <TemplateIcon icon={icons.faUser} style={{ marginRight: '0.7rem' }} />
                             Usuarios
                         </SlideLink>
                     </SlideItem>
 
                     <SlideItem isMobile={isMobile} isMenuOpen={isMenuOpen}>
                         <SlideLink href="/notifications">
-                            <FontAwesomeIcon icon={faBell} style={{ marginRight: '0.7rem' }} />
+                            <TemplateIcon icon={icons.faBell} style={{ marginRight: '0.7rem' }} />
                             Notificaciones
                         </SlideLink>
                     </SlideItem>
@@ -113,14 +102,14 @@ function SlideLayout() {
                     <div className = {styles.slideFooterContainer}>
                         <SlideItem isMobile={isMobile} isMenuOpen={isMenuOpen} className="logout-item">
                             <SlideLink href="/logout">
-                                <FontAwesomeIcon icon={faPowerOff} style={{ marginRight: '0.5rem' }} />
+                                <TemplateIcon icon={icons.faPowerOff} style={{ marginRight: '0.5rem' }} />
                                 Salir
                             </SlideLink>
                         </SlideItem>
                     </div>
                 </SlideMenuSection>
             </div>
-        </HeaderContainer>
+        </SlideContainer>
     );
 }
 

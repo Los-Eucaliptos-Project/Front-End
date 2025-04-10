@@ -1,13 +1,40 @@
-import api from './api-service';
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const fs = require('fs');
 
-const GetRequirements = async () => {
+const app = express();
+const port = 3001;
+
+app.use(bodyParser.json());
+app.use(cors());
+
+function leerDatos() {
   try {
-    const response = await api.get('/requirements');
-    return response.data;
+    const data = fs.readFileSync('data.json', 'utf8');
+    return JSON.parse(data);
   } catch (error) {
-    console.error('Error al obtener requerimientos:', error);
-    throw error;
+    return { users: [], 'pending-requirements': [] };
   }
-};
+}
 
-export default GetRequirements;
+function escribirDatos(data) {
+  fs.writeFileSync('data.json', JSON.stringify(data, null, 2));
+}
+
+app.post('/requirements', (req, res) => {
+  const nuevoRequerimiento = req.body;
+  const data = leerDatos();
+
+
+  nuevoRequerimiento.id = `REQ-${Date.now()}`;
+
+  data['pending-requirements'].push(nuevoRequerimiento);
+  escribirDatos(data);
+
+  res.status(201).json(nuevoRequerimiento);
+});
+
+app.listen(port, () => {
+  console.log(`API escuchando en http://localhost:${port}`);
+});

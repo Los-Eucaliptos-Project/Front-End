@@ -24,13 +24,16 @@
     margin: 10px;
     border-radius: 4px;
     cursor: pointer;
-    background-color: white;
-    color: black;
 }
 
 .button.primary {
     background-color: #1a6824;
     color: white;
+}
+
+.button.secondary {
+    background-color: white;
+    color: black;
 }
 
 .button.destroy {

@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import FormLogo from '../../components/form-logo.component';
 import SlideBarGreen from './slide-components/slide-side-bar-green.component.jsx';
 
-import styles from '../../modules/slide.module.css';
+import TemplateIcon from '../../components/icons/template-icon.icon.jsx';
+import icons from '../../utils/icons-library.js';
+
+import styles from '../../modules/slide.module.css'
+
 import { SlideCloseMenuIcon } from '../../styled/slide.styles.js';
 import { SlideItem } from '../../styled/slide.styles.js';
 import { SlideMenuSection } from '../../styled/slide.styles.js';
@@ -10,21 +14,6 @@ import { SlideHamburgerMenu } from '../../styled/slide.styles.js';
 import { SlideLogoSection } from '../../styled/slide.styles.js';
 import { SlideLink } from '../../styled/slide.styles.js';
 import { SlideContainer } from '../../styled/slide.styles.js';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faThLarge,
-  faPowerOff,
-  faUser,
-  faBell,
-  faCheck,
-  faScrewdriverWrench,
-  faBarsProgress,
-  faTag,
-  faTags,
-  faBars,
-  faTimes,
-} from '@fortawesome/free-solid-svg-icons';
 
 import useHeaderSlide from '../../hooks/use-header-slide.hook';
 import usePageRefresh from '../../hooks/use-page-refresh.hook.jsx';
