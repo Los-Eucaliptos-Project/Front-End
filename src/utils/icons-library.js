@@ -14,7 +14,7 @@ import {
   faPaperclip,
 } from '@fortawesome/free-solid-svg-icons';
 
-const icons = {
+const Icons = {
   faThLarge,
   faPowerOff,
   faUser,
@@ -30,4 +30,4 @@ const icons = {
   faPaperclip,
 };
 
-export default icons;
+export default Icons;

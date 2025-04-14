@@ -1,23 +1,22 @@
 import React from 'react';
-import HeaderLink from '../header-components/header-link.component';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import { SlideLink } from '../../../styled/slide.styles.js';
+import { SlideItem } from '../../../styled/slide.styles.js';
 
-import { SlideItem } from '../../styled/slide.styles.js';
+import TemplateIcon from '../../../components/icons/template-icon.icon.jsx';
+import icons from '../../../utils/icons-library.js';
 
-const SlideFooter = () => (
-  <div className={styles.HeaderFooterContainer}>
-    <SlideItem className="logout-item">
-      <HeaderLink href="/login">
-        <FontAwesomeIcon icon={faPowerOff} style={{ marginRight: '0.5rem' }} />
+import styles from '../../../modules/slide.module.css'
+
+
+const SlideFooter = ({ isMobile, isMenuOpen }) => (
+  <div className={styles.slideFooterContainer}>
+    <SlideItem $isMobile={isMobile} $isMenuOpen={isMenuOpen} className="logout-item">
+      <SlideLink href="/login">
+        <TemplateIcon icon={icons.faPowerOff} style={{ marginRight: '0.5rem' }} />
         Salir
-      </HeaderLink>
+      </SlideLink>
     </SlideItem>
   </div>
 );
 
 export default SlideFooter;
-
-
-
-
