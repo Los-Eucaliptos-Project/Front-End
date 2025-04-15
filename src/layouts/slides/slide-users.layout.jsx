@@ -37,7 +37,6 @@ function SlideUser() {
 
         <SlideMenu isMobile={isMobile} isMenuOpen={isMenuOpen} handleRefresh={handleRefresh} menuItems={updatedMenuItems} selectedPath="/users" />
         <SlideBarGreen marginTop="590px" />
-  |     <SlideFooter isMobile={isMobile} isMenuOpen={isMenuOpen} />
       </div>
     </SlideContainer>
   );

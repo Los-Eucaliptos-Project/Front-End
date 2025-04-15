@@ -37,7 +37,6 @@ function SlidePendingRequests() {
 
         <SlideMenu isMobile={isMobile} isMenuOpen={isMenuOpen} handleRefresh={handleRefresh} menuItems={updatedMenuItems} selectedPath="/pending-requests" />
         <SlideBarGreen marginTop="380px" />
-  |     <SlideFooter isMobile={isMobile} isMenuOpen={isMenuOpen} />
       </div>
     </SlideContainer>
   );

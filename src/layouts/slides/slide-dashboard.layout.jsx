@@ -6,7 +6,6 @@ import { SlideCloseMenuIcon, SlideContainer } from '../../styled/slide.styles.js
 import useHeaderSlide from '../../hooks/use-header-slide.hook';
 import usePageRefresh from '../../hooks/use-page-refresh.hook.jsx';
 import SlideMenu from './slide-components/slide-menu.component.jsx';
-import SlideFooter from './slide-components/slide-footer.component';
 import MenuItems from '../../utils/menu-items.js';
 import SlideHamburger from './slide-components/slide-hamburger.component.jsx';
 import SlideLogo from './slide-components/slide-logo.component.jsx';
@@ -37,7 +36,6 @@ function SlideDashboard() {
 
         <SlideMenu isMobile={isMobile} isMenuOpen={isMenuOpen} handleRefresh={handleRefresh} menuItems={updatedMenuItems} selectedPath="/dashboard" />
         <SlideBarGreen marginTop="180px" />
-  |     <SlideFooter isMobile={isMobile} isMenuOpen={isMenuOpen} />
       </div>
     </SlideContainer>
   );

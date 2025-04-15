@@ -37,7 +37,6 @@ function SlideCloseRequirements() {
 
         <SlideMenu isMobile={isMobile} isMenuOpen={isMenuOpen} handleRefresh={handleRefresh} menuItems={updatedMenuItems} selectedPath="/closed-requirements" />
         <SlideBarGreen marginTop="310px" />
-        <SlideFooter isMobile={isMobile} isMenuOpen={isMenuOpen} />
       </div>
     </SlideContainer>
   );

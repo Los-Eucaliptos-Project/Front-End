@@ -37,7 +37,6 @@ function SlideNotifications() {
 
         <SlideMenu isMobile={isMobile} isMenuOpen={isMenuOpen} handleRefresh={handleRefresh} menuItems={updatedMenuItems} selectedPath="/notifications" />
         <SlideBarGreen marginTop="660px" />
-  |     <SlideFooter isMobile={isMobile} isMenuOpen={isMenuOpen} />
       </div>
     </SlideContainer>
   );

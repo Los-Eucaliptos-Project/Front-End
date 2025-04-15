@@ -37,7 +37,6 @@ function SlideDashboard() {
 
         <SlideMenu isMobile={isMobile} isMenuOpen={isMenuOpen} handleRefresh={handleRefresh} menuItems={updatedMenuItems} selectedPath="/closed-requests" />
         <SlideBarGreen marginTop="450px" />
-        <SlideFooter isMobile={isMobile} isMenuOpen={isMenuOpen} />
       </div>
     </SlideContainer>
   );
