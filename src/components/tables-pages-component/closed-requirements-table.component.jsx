@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import SearchInputFilePages from '../search-input-file-pages.component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter, faArrowRight, faDownload } from '@fortawesome/free-solid-svg-icons';

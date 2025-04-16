@@ -1,6 +1,8 @@
-const LoginUser = async (email, password, navigate) => {
+const LoginUser = async (email, password, navigate, endpoint = "/users") => {
   try {
-    const response = await fetch("https://fresh-platypus-tightly.ngrok-free.app/api/login", {
+    const apiUrl = "http://localhost:3001";
+
+    const response = await fetch(`${apiUrl}${endpoint}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -11,11 +13,13 @@ const LoginUser = async (email, password, navigate) => {
     const data = await response.json();
 
     if (!response.ok) {
-      throw new Error(data.error || "Error desconocido");
+      throw new Error(data || "Credenciales inválidas");
     }
 
     console.log("Login exitoso:", data);
-    localStorage.setItem("token", data.token);
+
+    localStorage.setItem("token", data.accessToken);
+    localStorage.setItem("user", JSON.stringify(data.user));
 
     navigate("/dashboard");
     return data;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function FormLogo({ width, height, marginLeft }) {
+function LogoImage({ width, height, marginLeft }) {
   return (
     <div style={{ textAlign: 'center' }}>
       <img
@@ -29,4 +29,4 @@ function FormLogo({ width, height, marginLeft }) {
   );
 }
 
-export default FormLogo;
+export default LogoImage;

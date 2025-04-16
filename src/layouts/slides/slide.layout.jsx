@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import FormLogo from '../../components/form-logo.component';
-import SlideBarGreen from './slide-components/slide-side-bar-green.component.jsx';
+import LogoImage from '../../components/logo-image.component.jsx';
 
 import TemplateIcon from '../../components/icons/template-icon.icon.jsx';
 import icons from '../../utils/icons-library.js';
@@ -28,7 +27,7 @@ function SlideLayout() {
             <div className={styles.slideContent}>
                 <SlideLogoSection isMenuOpen={isMenuOpen}>
                     <SlideLink href="/">
-                        <FormLogo width="200px" height="80px" marginLeft="-1px" />
+                        <LogoImage width="200px" height="80px" marginLeft="-1px" />
                     </SlideLink>
                 </SlideLogoSection>
 

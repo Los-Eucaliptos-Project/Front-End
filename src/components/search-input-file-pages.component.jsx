@@ -62,7 +62,7 @@ function SearchInputFilePages({ type, placeholder, value, onChange, children, ic
         onFocus={handleFocus}
         onBlur={handleBlur}
       />
-      <FontAwesomeIcon icon={faSearch} style={iconStyle} /> {/* Agrega el icono */}
+      <FontAwesomeIcon icon={faSearch} style={iconStyle} /> 
 
       <style>
         {`

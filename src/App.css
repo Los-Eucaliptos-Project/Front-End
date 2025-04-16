@@ -19,7 +19,6 @@
   justify-content: center;
   align-items: center;
   /*background-color: #242424;  Color de fondo opcional */
-  background-image: url('/public/images/banner-los-eucaliptos.png');
   background-size: cover;
   background-position: center;
 }
