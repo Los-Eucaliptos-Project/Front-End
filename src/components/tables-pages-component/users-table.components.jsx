@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import SubmitButton from '../submit-button.component';
+import ButtonSubmit from '../buttons/button-submit.btn';
 import SearchInputFilePages from '../search-input-file-pages.component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter, faArrowRight, faFolder, faClipboard } from '@fortawesome/free-solid-svg-icons';
 import FilterMenu from '../filter-menu.component';
 
-import Pagination from '../paginator-components/pagination.component';
-import PaginatorButton from '../paginator-components/paginator-button.component';
-import PageNumbers from '../paginator-components/paginator-page-numbers.component';
+import Pagination from '../paginator-components/pagination.container';
+import ButtonPaginator from '../paginator-components/components/paginator-button.component';
+import PageNumbers from '../paginator-components/components/paginator-page-numbers.component';
 
-import TableStyleHeaderRow from '../table-components/table-style-header-row.component'
+import TableStyleHeaderRow from '../table-components/table-style-header-row.component';
 import TableStyleDatosRow from '../table-components/table-style-datos-row.component';
-import TableStyle from '../table-components/table-style.component'
+import TableStyle from '../table-components/table-style.component';
 import TableStyleContainer from '../table-components/table-style-container.component';
 import TableStyleStatusActive from '../table-components/table-style-status-active.component';
 
@@ -19,22 +19,25 @@ import ContainerStylePageHeader from '../main-container-components/container-sty
 
 import SampleDataPendingRequests from '../../data/SampleData';
 
+import usePagination from '../../hooks/use-pagination.hook';
+
 function UsersTable() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedStatus, setSelectedStatus] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9;
+
+  // Usar el hook de paginación
+  const { currentPage, onPageChange, itemsPerPage } = usePagination();
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
-    setCurrentPage(1);
+    onPageChange(1);  // Restablecer a la primera página cuando cambia la búsqueda
   };
 
   const handleStatusSelect = (status) => {
     setSelectedStatus(status);
-    setCurrentPage(1);
+    onPageChange(1);  // Restablecer a la primera página cuando cambia el estado
   };
-  
+
   const filteredData = SampleDataPendingRequests.filter(row => {
     if (row.status === 'Completado' || row.status === 'Rechazado') {
       return false;
@@ -56,9 +59,9 @@ function UsersTable() {
     const pageNumbers = [];
     for (let i = 1; i <= totalPages; i++) {
       pageNumbers.push(
-        <PaginatorButton key={i} onClick={() => setCurrentPage(i)} isActive={i === currentPage}>
+        <ButtonPaginator key={i} onClick={() => onPageChange(i)} isActive={i === currentPage}>
           {i}
-        </PaginatorButton>
+        </ButtonPaginator>
       );
     }
     return pageNumbers;
@@ -74,24 +77,20 @@ function UsersTable() {
             value={searchTerm}
             onChange={handleSearchChange}
           />
-          <FilterMenu onSelect={handleStatusSelect} >
+          <FilterMenu onSelect={handleStatusSelect}>
             <FontAwesomeIcon icon={faFilter} style={{ marginLeft: '8px', verticalAlign: 'middle' }} />
           </FilterMenu>
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <SubmitButton
-            marginTop="30px"
-            marginLeft="30px"
-            marginBottom="30px"
-          >
+          <ButtonSubmit marginTop="30px" marginLeft="30px" marginBottom="30px">
             Crear nuevo
-          </SubmitButton>
+          </ButtonSubmit>
         </div>
       </ContainerStylePageHeader>
       <TableStyle>
         <thead>
           <tr>
-            <TableStyleHeaderRow> Estado</TableStyleHeaderRow>
+            <TableStyleHeaderRow>Estado</TableStyleHeaderRow>
             <TableStyleHeaderRow>Nombre ↑</TableStyleHeaderRow>
             <TableStyleHeaderRow>Correo ↑</TableStyleHeaderRow>
             <TableStyleHeaderRow>Funcionario ↑</TableStyleHeaderRow>
@@ -104,7 +103,9 @@ function UsersTable() {
         <tbody>
           {currentItems.map((row, index) => (
             <tr key={index}>
-              <TableStyleDatosRow><TableStyleStatusActive statusActive = {row.statusActive}> {row.statusActive}</TableStyleStatusActive></TableStyleDatosRow>
+              <TableStyleDatosRow>
+                <TableStyleStatusActive statusActive={row.statusActive}>{row.statusActive}</TableStyleStatusActive>
+              </TableStyleDatosRow>
               <TableStyleDatosRow>{row.fulName}</TableStyleDatosRow>
               <TableStyleDatosRow>{row.email}</TableStyleDatosRow>
               <TableStyleDatosRow>{row.official}</TableStyleDatosRow>
@@ -118,8 +119,8 @@ function UsersTable() {
               </TableStyleDatosRow>
               <TableStyleDatosRow bold={true}>
                 <FontAwesomeIcon
-                 icon={faClipboard}
-                 style={{ cursor: 'pointer' }}
+                  icon={faClipboard}
+                  style={{ cursor: 'pointer' }}
                   onClick={() => console.log(`Descargar para ${row.id}`)}
                 />
               </TableStyleDatosRow>
@@ -135,13 +136,13 @@ function UsersTable() {
         </tbody>
       </TableStyle>
       <Pagination>
-        <PaginatorButton onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
+        <ButtonPaginator onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1}>
           ← Anterior
-        </PaginatorButton>
+        </ButtonPaginator>
         <PageNumbers>{renderPageNumbers()}</PageNumbers>
-        <PaginatorButton onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === totalPages}>
+        <ButtonPaginator onClick={() => onPageChange(currentPage + 1)} disabled={currentPage === totalPages}>
           Siguiente →
-        </PaginatorButton>
+        </ButtonPaginator>
       </Pagination>
     </TableStyleContainer>
   );

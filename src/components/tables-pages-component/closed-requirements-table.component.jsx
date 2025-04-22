@@ -5,9 +5,9 @@ import { faFilter, faArrowRight, faDownload } from '@fortawesome/free-solid-svg-
 import FilterMenu from '../filter-menu.component';
 import DateFilterInput from '../filters-menu/date-filter-input.component';
 
-import Pagination from '../paginator-components/pagination.component';
-import PaginatorButton from '../paginator-components/paginator-button.component';
-import PageNumbers from '../paginator-components/paginator-page-numbers.component';
+import Pagination from '../paginator-components/pagination.container';
+import ButtonPaginator from '../paginator-components/components/paginator-button.component';
+import PageNumbers from '../paginator-components/components/paginator-page-numbers.component';
 
 import TableStyleHeaderRow from '../table-components/table-style-header-row.component'
 import TableStyleDatosRow from '../table-components/table-style-datos-row.component';
@@ -21,30 +21,31 @@ import SampleDataPendingRequests from '../../data/SampleData';
 
 import CustomModal from '../custom-modal-components/custom-modal-white-and-green.component';
 
+import usePagination from '../../hooks/use-pagination.hook'
 
 function ClosedRequirementsTableContainer() {
   const [selectedDate, setSelectedDate] = useState(null);
-
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
 
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedStatus, setSelectedStatus] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9;
+
+  // Usar el hook de paginación
+  const { currentPage, onPageChange, itemsPerPage } = usePagination();
 
   const [downloandModalVisible, setDownloandModalVisible] = useState(false);
   const [selectedRowId, setSelectedRowId] = useState(null);
-  
+
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
-    setCurrentPage(1);
+    onPageChange(1);  // Restablecer a la primera página cuando cambia la búsqueda
   };
 
   const handleStatusSelect = (status) => {
     setSelectedStatus(status);
-    setCurrentPage(1);
+    onPageChange(1);  // Restablecer a la primera página cuando cambia el estado
   };
 
   const handleDownloadClick = (rowId) => {
@@ -60,7 +61,6 @@ function ClosedRequirementsTableContainer() {
   const handleCancelDownload = () => {
     setDownloandModalVisible(false);
   };
-
 
   const filteredData = SampleDataPendingRequests.filter(row => {
     if (row.status !== 'Completado' && row.status !== 'Rechazado') {
@@ -83,9 +83,9 @@ function ClosedRequirementsTableContainer() {
     const pageNumbers = [];
     for (let i = 1; i <= totalPages; i++) {
       pageNumbers.push(
-        <PaginatorButton key={i} onClick={() => setCurrentPage(i)} isActive={i === currentPage}>
+        <ButtonPaginator key={i} onClick={() => onPageChange(i)} isActive={i === currentPage}>
           {i}
-        </PaginatorButton>
+        </ButtonPaginator>
       );
     }
     return pageNumbers;
@@ -101,7 +101,7 @@ function ClosedRequirementsTableContainer() {
             value={searchTerm}
             onChange={handleSearchChange}
           />
-          <FilterMenu onSelect={handleStatusSelect} >
+          <FilterMenu onSelect={handleStatusSelect}>
             <FontAwesomeIcon icon={faFilter} style={{ marginLeft: '8px', verticalAlign: 'middle' }} />
           </FilterMenu>
         </div>
@@ -144,20 +144,20 @@ function ClosedRequirementsTableContainer() {
                   icon={faDownload}
                   style={{ cursor: 'pointer' }}
                   onClick={() => handleDownloadClick(row.id)}
-                  />
+                />
               </TableStyleDatosRow>
             </tr>
           ))}
         </tbody>
       </TableStyle>
       <Pagination>
-        <PaginatorButton onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
+        <ButtonPaginator onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1}>
           ← Anterior
-        </PaginatorButton>
+        </ButtonPaginator>
         <PageNumbers>{renderPageNumbers()}</PageNumbers>
-        <PaginatorButton onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === totalPages}>
+        <ButtonPaginator onClick={() => onPageChange(currentPage + 1)} disabled={currentPage === totalPages}>
           Siguiente →
-        </PaginatorButton>
+        </ButtonPaginator>
       </Pagination>
       <CustomModal
         isOpen={downloandModalVisible}
@@ -169,7 +169,6 @@ function ClosedRequirementsTableContainer() {
         onSecondaryButtonClick={handleCancelDownload}
       />
     </TableStyleContainer>
-    
   );
 }
 

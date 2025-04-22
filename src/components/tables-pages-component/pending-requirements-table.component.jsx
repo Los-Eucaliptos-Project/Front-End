@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import SubmitButton from '../submit-button.component';
+import ButtonSubmit from '../buttons/button-submit.btn';
 import SearchInputFilePages from '../search-input-file-pages.component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter, faArrowRight, faDownload } from '@fortawesome/free-solid-svg-icons';
 import FilterMenu from '../filter-menu.component';
 
-import Pagination from '../paginator-components/pagination.component';
-import PaginatorButton from '../paginator-components/paginator-button.component';
-import PageNumbers from '../paginator-components/paginator-page-numbers.component';
+import Pagination from '../paginator-components/pagination.container';
+import ButtonPaginator from '../paginator-components/components/paginator-button.component';
+import PageNumbers from '../paginator-components/components/paginator-page-numbers.component';
 
 import TableStyleHeaderRow from '../table-components/table-style-header-row.component';
 import TableStyleDatosRow from '../table-components/table-style-datos-row.component';
@@ -86,13 +86,13 @@ function PendingRequirementsTableContainer() {
     const pageNumbers = [];
     for (let i = 1; i <= totalPages; i++) {
       pageNumbers.push(
-        <PaginatorButton
+        <ButtonPaginator
           key={i}
           onClick={() => setCurrentPage(i)}
           isActive={i === currentPage}
         >
           {i}
-        </PaginatorButton>
+        </ButtonPaginator>
       );
     }
     return pageNumbers;
@@ -118,13 +118,13 @@ return (
       <div style={{ display: 'flex', alignItems: 'center' }}>
 
         <Link to="/pending-requirements/new-requirements">
-          <SubmitButton
+          <ButtonSubmit
             marginTop="30px"
             marginLeft="30px"
             marginBottom="30px"
           >
             Crear nuevo
-          </SubmitButton>
+          </ButtonSubmit>
         </Link>
 
       </div>
@@ -192,13 +192,13 @@ return (
       </tbody>
     </TableStyle>
     <Pagination>
-      <PaginatorButton onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
+      <ButtonPaginator onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
         ← Anterior
-      </PaginatorButton>
+      </ButtonPaginator>
       <PageNumbers>{renderPageNumbers()}</PageNumbers>
-      <PaginatorButton onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === totalPages}>
+      <ButtonPaginator onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === totalPages}>
         Siguiente →
-      </PaginatorButton>
+      </ButtonPaginator>
     </Pagination>
       <DownloadModal
         isOpen={isDownloadModalOpen}

@@ -1,6 +1,6 @@
 import React from "react";
 
-function SubmitButton({ children, onClick, marginLeft, marginRight, marginTop, marginBottom }) {
+function ButtonSubmit({ children, onClick, marginLeft, marginRight, marginTop, marginBottom }) {
   return (
     <button 
       style={{
@@ -24,4 +24,4 @@ function SubmitButton({ children, onClick, marginLeft, marginRight, marginTop, m
   );
 }
 
-export default SubmitButton;
+export default ButtonSubmit;

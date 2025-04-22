@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import FormInputFile from "../components/form-input-file.component";
-import SubmitButton from "../../components/submit-button.component";
+import ButtonSubmit from '../../components/buttons/button-submit.btn';
 import FormLink from "../components/form-link.component";
 import { useNavigate } from "react-router-dom";
 import LoginUser from "../../services/auth-service";
@@ -53,9 +53,9 @@ function AuthForm() {
         </FormLink>
       </div>
 
-      <SubmitButton type="submit" margin="30px">
+      <ButtonSubmit type="submit" margin="30px">
         Iniciar sesión
-      </SubmitButton>
+      </ButtonSubmit>
 
       {loginError && <p className={styles.errorText}>{loginError}</p>}
     </form>
