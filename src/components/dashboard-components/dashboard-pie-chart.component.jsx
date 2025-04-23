@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { PieChart, Pie, Cell, Text } from 'recharts';
+import { PieChart, Pie, Cell } from 'recharts';
 
 const data = [
   { name: 'Group A', value: 600 },
@@ -7,7 +7,7 @@ const data = [
   { name: 'Group C', value: 300 },
 ];
 
-const COLORS = ['#2c4261', '#1a56a8 ', '#5395ee'];
+const COLORS = ['#2c4261', '#1a56a8', '#5395ee'];
 
 export default class DashboardPieChart extends PureComponent {
   render() {
@@ -16,7 +16,7 @@ export default class DashboardPieChart extends PureComponent {
         <Pie
           data={data}
           cx={300}
-          cy={100}
+          cy={100}ñ
           startAngle={180}
           endAngle={0}
           innerRadius={60}
@@ -29,15 +29,16 @@ export default class DashboardPieChart extends PureComponent {
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
-        <Text
-          x={400}
-          y={200}
+        
+        <text
+          x={300}
+          y={100}
           textAnchor="middle"
-          verticalAnchor="middle"
+          dominantBaseline="middle"
           style={{ fontSize: 24, fontWeight: 'bold', fill: 'black' }}
-          >
+        >
           12
-        </Text>
+        </text>
       </PieChart>
     );
   }

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter, faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import styles from "../modules/filter-menu.module.css";
+import styles from "../../modules/filters.module.css";
 
 function FilterMenu({ onSelect }) {
   const [isOpen, setIsOpen] = useState(false);

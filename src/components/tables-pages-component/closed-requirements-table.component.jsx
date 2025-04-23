@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import SearchInputFilePages from '../search-input-file-pages.component';
+import SearchInputFilePages from '../filters-menu/search-input-file-pages.component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter, faArrowRight, faDownload } from '@fortawesome/free-solid-svg-icons';
-import FilterMenu from '../filter-menu.component';
+import FilterMenu from '../filters-menu/filter-menu.component';
 import DateFilterInput from '../filters-menu/date-filter-input.component';
 
 import Pagination from '../paginator-components/pagination.container';
