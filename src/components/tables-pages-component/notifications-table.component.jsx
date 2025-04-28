@@ -20,6 +20,8 @@ import SampleDataPendingRequests from '../../data/SampleData';
 
 import usePagination from '../../hooks/use-pagination.hook'
 
+import CustomSwitch from '../custom-iu-components/custom-switch-style.component'
+
 function NotificationsTable() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedStatus, setSelectedStatus] = useState(null);
@@ -125,6 +127,30 @@ function NotificationsTable() {
             <tr key={index}>
               <TableStyleDatosRow>{row.fulName}</TableStyleDatosRow>
               <TableStyleDatosRow>{row.email}</TableStyleDatosRow>
+              <TableStyleDatosRow>
+                 <CustomSwitch
+                   checked={row.creation || false}
+                   onChange={(e) =>
+                     handleSwitchChange(row.id, 'creation', e.target.checked)
+                   }
+                 />
+               </TableStyleDatosRow>
+               <TableStyleDatosRow>
+                 <CustomSwitch
+                   checked={row.firma || false}
+                   onChange={(e) =>
+                     handleSwitchChange(row.id, 'firma', e.target.checked)
+                   }
+                 />
+               </TableStyleDatosRow>
+               <TableStyleDatosRow>
+                 <CustomSwitch
+                   checked={row.rechazo || false}
+                   onChange={(e) =>
+                     handleSwitchChange(row.id, 'rechazo', e.target.checked)
+                   }
+                 />
+               </TableStyleDatosRow>
             </tr>
           ))}
         </tbody>

@@ -22,7 +22,7 @@ import SampleDataPendingRequests from '../../data/SampleData';
 
 import { Link } from 'react-router-dom';
 
-import DownloadModal from '../../components/custom-modal-components/download-modal.component';
+import DownloadModal from '../custom-iu-components/modals/download-modal.component';
 
 import usePagination from '../../hooks/use-pagination.hook';
 

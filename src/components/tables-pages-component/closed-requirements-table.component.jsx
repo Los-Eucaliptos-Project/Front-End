@@ -19,7 +19,7 @@ import ContainerStylePageHeader from '../main-container-components/container-sty
 
 import SampleDataPendingRequests from '../../data/SampleData';
 
-import CustomModal from '../custom-modal-components/custom-modal-white-and-green.component';
+import CustomModal from '../custom-iu-components/modals/custom-modal-white-and-green.component';
 
 import usePagination from '../../hooks/use-pagination.hook'
 
