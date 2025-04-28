@@ -22,26 +22,31 @@ import SampleDataPendingRequests from '../../data/SampleData';
 
 import CustomModal from '../custom-modal-components/custom-modal-white-and-green.component';
 
+import usePagination from '../../hooks/use-pagination.hook';
+
 function PedingRequestsTable() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedStatus, setSelectedStatus] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9;
-
   const [downloandModalVisible, setDownloandModalVisible] = useState(false);
   const [selectedRowId, setSelectedRowId] = useState(null);
 
+  const {
+    currentPage,
+    onPageChange,
+    itemsPerPage,
+    resetPagination,
+  } = usePagination(1, 9);
+
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
-    setCurrentPage(1);
+    resetPagination();
   };
 
   const handleStatusSelect = (status) => {
     setSelectedStatus(status);
-    setCurrentPage(1);
+    resetPagination();
   };
 
-  
   const handleDownloadClick = (rowId) => {
     setSelectedRowId(rowId);
     setDownloandModalVisible(true);
@@ -57,27 +62,27 @@ function PedingRequestsTable() {
   };
 
   const filteredData = SampleDataPendingRequests.filter(row => {
-    if (row.status !== 'En espera' && row.status !== 'Aprobado' && row.status !== 'En avance') {
-      return false;
-    }
+    if (!['En espera', 'Aprobado', 'En avance'].includes(row.status)) return false;
 
-    const searchMatch = row.id?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    const searchMatch =
+      row.id?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       row.name?.toLowerCase().includes(searchTerm.toLowerCase());
+
     const statusMatch = selectedStatus ? row.status === selectedStatus : true;
+
     return searchMatch && statusMatch;
   });
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
-
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
   const renderPageNumbers = () => {
     const pageNumbers = [];
     for (let i = 1; i <= totalPages; i++) {
       pageNumbers.push(
-        <ButtonPaginator key={i} onClick={() => setCurrentPage(i)} isActive={i === currentPage}>
+        <ButtonPaginator key={i} onClick={() => onPageChange(i)} isActive={i === currentPage}>
           {i}
         </ButtonPaginator>
       );
@@ -95,20 +100,17 @@ function PedingRequestsTable() {
             value={searchTerm}
             onChange={handleSearchChange}
           />
-          <FilterMenu onSelect={handleStatusSelect} >
+          <FilterMenu onSelect={handleStatusSelect}>
             <FontAwesomeIcon icon={faFilter} style={{ marginLeft: '8px', verticalAlign: 'middle' }} />
           </FilterMenu>
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <ButtonSubmit
-            marginTop="30px"
-            marginLeft="30px"
-            marginBottom="30px"
-          >
+          <ButtonSubmit marginTop="30px" marginLeft="30px" marginBottom="30px">
             Crear nuevo
           </ButtonSubmit>
         </div>
       </ContainerStylePageHeader>
+
       <TableStyle>
         <thead>
           <tr>
@@ -128,9 +130,13 @@ function PedingRequestsTable() {
               <TableStyleDatosRow>{row.id}</TableStyleDatosRow>
               <TableStyleDatosRow>{row.name}</TableStyleDatosRow>
               <TableStyleDatosRow>{row.issue}</TableStyleDatosRow>
-              <TableStyleDatosRow><TableStatusBadgeStyle status={row.status}>{row.status}</TableStatusBadgeStyle></TableStyleDatosRow>
+              <TableStyleDatosRow>
+                <TableStatusBadgeStyle status={row.status}>{row.status}</TableStatusBadgeStyle>
+              </TableStyleDatosRow>
               <TableStyleDatosRow>{row.closed}</TableStyleDatosRow>
-              <TableStyleDatosRow><TableStyleVBStatusBadge status={row.vb1}>{row.vb1}</TableStyleVBStatusBadge></TableStyleDatosRow>
+              <TableStyleDatosRow>
+                <TableStyleVBStatusBadge status={row.vb1}>{row.vb1}</TableStyleVBStatusBadge>
+              </TableStyleDatosRow>
               <TableStyleDatosRow bold={true}>
                 <FontAwesomeIcon
                   icon={faArrowRight}
@@ -143,21 +149,23 @@ function PedingRequestsTable() {
                   icon={faDownload}
                   style={{ cursor: 'pointer' }}
                   onClick={() => handleDownloadClick(row.id)}
-                  />
+                />
               </TableStyleDatosRow>
             </tr>
           ))}
         </tbody>
       </TableStyle>
+
       <Pagination>
-        <ButtonPaginator onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
+        <ButtonPaginator onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1}>
           ← Anterior
         </ButtonPaginator>
         <PageNumbers>{renderPageNumbers()}</PageNumbers>
-        <ButtonPaginator onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === totalPages}>
+        <ButtonPaginator onClick={() => onPageChange(currentPage + 1)} disabled={currentPage === totalPages}>
           Siguiente →
         </ButtonPaginator>
       </Pagination>
+
       <CustomModal
         isOpen={downloandModalVisible}
         onClose={handleCancelDownload}
