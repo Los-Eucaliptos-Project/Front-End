@@ -20,21 +20,28 @@ import ContainerStylePageHeader from '../main-container-components/container-sty
 
 import SampleDataPendingRequests from '../../data/SampleData';
 
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
+import DownloadModal from '../../components/custom-modal-components/download-modal.component';
 
-import DownloadModal from '../../components/custom-modal-components/download-modal.component'
+import usePagination from '../../hooks/use-pagination.hook';
 
 function PendingRequirementsTableContainer() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedStatus, setSelectedStatus] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
   const [downloadApiUrl, setDownloadApiUrl] = useState('');
 
+  const {
+    currentPage,
+    setCurrentPage,
+    onPageChange,
+    itemsPerPage,
+    resetPagination,
+  } = usePagination(1, 9);
+
   const handleDownloadClick = (rowId) => {
-    setDownloadApiUrl(`/api/requirements/${rowId}/download`); // Reemplaza con tu URL de API
+    setDownloadApiUrl(`/api/requirements/${rowId}/download`);
     setIsDownloadModalOpen(true);
   };
 
@@ -42,16 +49,14 @@ function PendingRequirementsTableContainer() {
     setIsDownloadModalOpen(false);
   };
 
-  const itemsPerPage = 9;
-
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
-    setCurrentPage(1);
+    resetPagination();
   };
 
   const handleStatusSelect = (status) => {
     setSelectedStatus(status);
-    setCurrentPage(1);
+    resetPagination();
   };
 
   const calculateDaysPassed = (creationDate) => {
@@ -88,7 +93,7 @@ function PendingRequirementsTableContainer() {
       pageNumbers.push(
         <ButtonPaginator
           key={i}
-          onClick={() => setCurrentPage(i)}
+          onClick={() => onPageChange(i)}
           isActive={i === currentPage}
         >
           {i}
@@ -97,109 +102,98 @@ function PendingRequirementsTableContainer() {
     }
     return pageNumbers;
   };
-  
-return (
-  <TableStyleContainer>
-    <ContainerStylePageHeader>
-      <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
-        <SearchInputFilePages
-          type="text"
-          placeholder="Buscar por ID o solicitante"
-          value={searchTerm}
-          onChange={handleSearchChange}
-        />
-        <FilterMenu onSelect={handleStatusSelect}>
-          <FontAwesomeIcon
-            icon={faFilter}
-            style={{ marginLeft: '8px', verticalAlign: 'middle' }}
+
+  return (
+    <TableStyleContainer>
+      <ContainerStylePageHeader>
+        <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+          <SearchInputFilePages
+            type="text"
+            placeholder="Buscar por ID o solicitante"
+            value={searchTerm}
+            onChange={handleSearchChange}
           />
-        </FilterMenu>
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+          <FilterMenu onSelect={handleStatusSelect}>
+            <FontAwesomeIcon
+              icon={faFilter}
+              style={{ marginLeft: '8px', verticalAlign: 'middle' }}
+            />
+          </FilterMenu>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Link to="/pending-requirements/new-requirements">
+            <ButtonSubmit marginTop="30px" marginLeft="30px" marginBottom="30px">
+              Crear nuevo
+            </ButtonSubmit>
+          </Link>
+        </div>
+      </ContainerStylePageHeader>
 
-        <Link to="/pending-requirements/new-requirements">
-          <ButtonSubmit
-            marginTop="30px"
-            marginLeft="30px"
-            marginBottom="30px"
-          >
-            Crear nuevo
-          </ButtonSubmit>
-        </Link>
-
-      </div>
-    </ContainerStylePageHeader>
-    <TableStyle>
-      <thead>
-        <tr>
-          <TableStyleHeaderRow>ID</TableStyleHeaderRow>
-          <TableStyleHeaderRow>Solicitante ↑</TableStyleHeaderRow>
-          <TableStyleHeaderRow>Estado</TableStyleHeaderRow>
-          <TableStyleHeaderRow>Creación</TableStyleHeaderRow>
-          <TableStyleHeaderRow>Días</TableStyleHeaderRow>
-          <TableStyleHeaderRow>VB1</TableStyleHeaderRow>
-          <TableStyleHeaderRow>VB2</TableStyleHeaderRow>
-          <TableStyleHeaderRow>VB3</TableStyleHeaderRow>
-          <TableStyleHeaderRow></TableStyleHeaderRow>
-          <TableStyleHeaderRow></TableStyleHeaderRow>
-        </tr>
-      </thead>
-      <tbody>
-        {currentItems.map((row, index) => (
-          <tr key={index}>
-            <TableStyleDatosRow>{row.id}</TableStyleDatosRow>
-            <TableStyleDatosRow>{row.name}</TableStyleDatosRow>
-            <TableStyleDatosRow>
-              <TableStatusBadgeStyle status={row.status}>
-                {row.status}
-              </TableStatusBadgeStyle>
-            </TableStyleDatosRow>
-            <TableStyleDatosRow>{row.creationDate}</TableStyleDatosRow>
-            <TableStyleDatosRow>
-              {calculateDaysPassed(row.creationDate)}
-            </TableStyleDatosRow>
-            <TableStyleDatosRow>
-              <TableStyleVBStatusBadge status={row.vb1}>
-                {row.vb1}
-              </TableStyleVBStatusBadge>
-            </TableStyleDatosRow>
-            <TableStyleDatosRow>
-              <TableStyleVBStatusBadge status={row.vb2}>
-                {row.vb2}
-              </TableStyleVBStatusBadge>
-            </TableStyleDatosRow>
-            <TableStyleDatosRow>
-              <TableStyleVBStatusBadge status={row.vb3}>
-                {row.vb3}
-              </TableStyleVBStatusBadge>
-            </TableStyleDatosRow>
-            <TableStyleDatosRow bold={true}>
-              <FontAwesomeIcon
-                icon={faArrowRight}
-                style={{ cursor: 'pointer' }}
-                onClick={() => handleExportClick(row.id)}
-              />
-            </TableStyleDatosRow>
-            <TableStyleDatosRow bold={true}>
-              <FontAwesomeIcon
-                icon={faDownload}
-                style={{ cursor: 'pointer' }}
-                onClick={() => handleDownloadClick(row.id)}
-              />
-            </TableStyleDatosRow>
+      <TableStyle>
+        <thead>
+          <tr>
+            <TableStyleHeaderRow>ID</TableStyleHeaderRow>
+            <TableStyleHeaderRow>Solicitante ↑</TableStyleHeaderRow>
+            <TableStyleHeaderRow>Estado</TableStyleHeaderRow>
+            <TableStyleHeaderRow>Creación</TableStyleHeaderRow>
+            <TableStyleHeaderRow>Días</TableStyleHeaderRow>
+            <TableStyleHeaderRow>VB1</TableStyleHeaderRow>
+            <TableStyleHeaderRow>VB2</TableStyleHeaderRow>
+            <TableStyleHeaderRow>VB3</TableStyleHeaderRow>
+            <TableStyleHeaderRow></TableStyleHeaderRow>
+            <TableStyleHeaderRow></TableStyleHeaderRow>
           </tr>
-        ))}
-      </tbody>
-    </TableStyle>
-    <Pagination>
-      <ButtonPaginator onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
-        ← Anterior
-      </ButtonPaginator>
-      <PageNumbers>{renderPageNumbers()}</PageNumbers>
-      <ButtonPaginator onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === totalPages}>
-        Siguiente →
-      </ButtonPaginator>
-    </Pagination>
+        </thead>
+        <tbody>
+          {currentItems.map((row, index) => (
+            <tr key={index}>
+              <TableStyleDatosRow>{row.id}</TableStyleDatosRow>
+              <TableStyleDatosRow>{row.name}</TableStyleDatosRow>
+              <TableStyleDatosRow>
+                <TableStatusBadgeStyle status={row.status}>
+                  {row.status}
+                </TableStatusBadgeStyle>
+              </TableStyleDatosRow>
+              <TableStyleDatosRow>{row.creationDate}</TableStyleDatosRow>
+              <TableStyleDatosRow>{calculateDaysPassed(row.creationDate)}</TableStyleDatosRow>
+              <TableStyleDatosRow>
+                <TableStyleVBStatusBadge status={row.vb1}>{row.vb1}</TableStyleVBStatusBadge>
+              </TableStyleDatosRow>
+              <TableStyleDatosRow>
+                <TableStyleVBStatusBadge status={row.vb2}>{row.vb2}</TableStyleVBStatusBadge>
+              </TableStyleDatosRow>
+              <TableStyleDatosRow>
+                <TableStyleVBStatusBadge status={row.vb3}>{row.vb3}</TableStyleVBStatusBadge>
+              </TableStyleDatosRow>
+              <TableStyleDatosRow bold={true}>
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => console.log(`Ver detalles de ${row.id}`)}
+                />
+              </TableStyleDatosRow>
+              <TableStyleDatosRow bold={true}>
+                <FontAwesomeIcon
+                  icon={faDownload}
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => handleDownloadClick(row.id)}
+                />
+              </TableStyleDatosRow>
+            </tr>
+          ))}
+        </tbody>
+      </TableStyle>
+
+      <Pagination>
+        <ButtonPaginator onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1}>
+          ← Anterior
+        </ButtonPaginator>
+        <PageNumbers>{renderPageNumbers()}</PageNumbers>
+        <ButtonPaginator onClick={() => onPageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+          Siguiente →
+        </ButtonPaginator>
+      </Pagination>
+
       <DownloadModal
         isOpen={isDownloadModalOpen}
         onClose={handleCloseDownloadModal}
@@ -208,7 +202,8 @@ return (
       >
         <p>¿Seguro que quieres descargar este requerimiento?</p>
       </DownloadModal>
-  </TableStyleContainer>
-);
+    </TableStyleContainer>
+  );
 }
+
 export default PendingRequirementsTableContainer;
