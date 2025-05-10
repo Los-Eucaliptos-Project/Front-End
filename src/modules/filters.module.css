@@ -1,0 +1,155 @@
+.filterMenuContainer {
+    position: relative;
+    display: inline-block;
+    font-family: sans-serif;
+    padding-left: 100px;
+}
+
+.filterButton {
+    background-color: transparent;
+    color: white;
+    background: darkgreen;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4em;
+    padding: 6px;
+}
+
+.filterOptions {
+    position: absolute;
+    top: 100%;
+    left: 10;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    padding: 15px;
+    width: 300px;
+    border-radius: 20px;
+    color: black;
+}
+
+.filterTitle {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    color: black;
+}
+
+.filterSection {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    
+}
+
+.filterLabel {
+    display: block;
+    margin-bottom: 0;
+    font-weight: bold;
+    text-align: left;
+    width: 30%;
+}
+
+.filterSelectContainer {
+    position: relative;
+    width: 70%;
+}
+
+.filterSelect {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f0f8ff;
+    appearance: none;
+    border-color: lightblue;
+    padding-right: 30px;
+    color: black;
+
+}
+
+.chevronIcon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: darkblue;
+}
+
+.resetButton {
+    background: none;
+    border: none;
+    color: darkblue;
+    cursor: pointer;
+    padding: 0;
+    margin-left: auto;
+}
+
+.applyButton {
+    background-color: rgb(255, 255, 255);
+    color: darkblue;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: auto;
+    display: block;
+    font-weight: bold;
+}
+
+.filterHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* filter de module search */
+.wrapper {
+    position: relative;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: darkblue;
+    text-align: left;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 0.5rem 2.5rem;
+    border: 1px solid rgba(97, 148, 226, 0.7);
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #dae9f6;
+    color: black;
+  }
+  
+  .input:focus {
+    border-color: #dde5ec;
+    box-shadow: 0 0 0 2px rgba(101, 164, 216, 0.36);
+  }
+  
+  @media (max-width: 600px) {
+    .input {
+      font-size: 0.9rem;
+    }
+  }
+  
+  .icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: gray;
+  }
+  

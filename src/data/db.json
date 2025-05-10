@@ -1,0 +1,93 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "2",
+      "email": "user@gmail.com",
+      "password": "password"
+    },
+    {
+      "id": "da8f",
+      "email": "admin@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "faa6",
+      "email": "user@gmail.com",
+      "password": "password"
+    },
+    {
+      "id": "14f2",
+      "email": "ss@csc",
+      "password": "ss"
+    },
+    {
+      "id": "8414",
+      "email": "",
+      "password": ""
+    },
+    {
+      "id": "94e6",
+      "email": "admin@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "77f7",
+      "email": "anaely.burga@precisa.com.pe",
+      "password": "ss"
+    },
+    {
+      "id": "b0f0",
+      "email": "ss@csc",
+      "password": "ss"
+    },
+    {
+      "id": "535e",
+      "email": "ss@csc",
+      "password": "a"
+    },
+    {
+      "id": "adfa",
+      "email": "admin@gmail.com",
+      "password": "dd"
+    },
+    {
+      "id": "083f",
+      "email": "",
+      "password": ""
+    }
+  ],
+  "pending-requirements": [
+    {
+      "id": "REQ-1698422400003",
+      "numeroRequerimiento": "000001",
+      "solicitante": "Juan Pérez",
+      "fecha": "2023-10-27",
+      "motivo": "Necesito un nuevo monitor",
+      "items": [
+        {
+          "cantidad": "2",
+          "unidadMedida": "Unidades",
+          "descripcion": "Monitor 24 pulgadas",
+          "observaciones": "Preferiblemente marca Dell"
+        },
+        {
+          "cantidad": "1",
+          "unidadMedida": "Pieza",
+          "descripcion": "Teclado mecánico",
+          "observaciones": "Con retroiluminación RGB"
+        },
+        {
+          "cantidad": "5",
+          "unidadMedida": "Metros",
+          "descripcion": "Cable HDMI",
+          "observaciones": "Versión 2.0 o superior"
+        }
+      ]
+    }
+  ]
+}
